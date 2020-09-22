@@ -82,3 +82,7 @@ $route['produk-ubah/(:num)'] = 'Produk/ubah/$1';
 $route['produk-ganti/(:num)'] = 'Produk/ganti/$1';
 $route['produk-hapus/(:num)'] = 'Produk/hapus/$1';
 $route['produk-detail/(:num)'] = 'Produk/detail/$1';
+
+
+// PELANGGAN
+$route['pelanggan'] = 'Pelanggan';

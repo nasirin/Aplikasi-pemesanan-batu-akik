@@ -5,6 +5,7 @@ class Produk extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        check_not_login();
         $this->load->model('M_produk');
 
         $config['allowed_types'] = 'jpg|png|jpeg';
@@ -91,14 +92,14 @@ class Produk extends CI_Controller
                 $this->session->set_flashdata('error', $error);
                 redirect('produk');
             }
-        }else{
+        } else {
             $post['gambar'] = null;
-            $this->M_produk->ubah($post,$id);
+            $this->M_produk->ubah($post, $id);
             if ($this->db->affected_rows() > 0) {
-                $this->session->set_flashdata('success','Data successfully changes');
+                $this->session->set_flashdata('success', 'Data successfully changes');
                 redirect('produk');
-            }else{
-                $this->session->set_flashdata('success','Data still available, nothing changed');
+            } else {
+                $this->session->set_flashdata('success', 'Data still available, nothing changed');
                 redirect('produk');
             }
         }
@@ -107,16 +108,16 @@ class Produk extends CI_Controller
     public function hapus($id)
     {
         $kar = $this->M_produk->get($id)->row();
-		if ($kar->img_produk != null) {
-			$target_file = './assets/img/produk/'.$kar->img_produk;
-			unlink($target_file);
-		}
-		
-		$this->M_produk->hapus($id);
-		if ($this->db->affected_rows() > 0) {
-			$this->session->set_flashdata('success','Data berhasil di hapus');
-			redirect('produk');
-		}
+        if ($kar->img_produk != null) {
+            $target_file = './assets/img/produk/' . $kar->img_produk;
+            unlink($target_file);
+        }
+
+        $this->M_produk->hapus($id);
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata('success', 'Data berhasil di hapus');
+            redirect('produk');
+        }
     }
 
     public function detail($id)

@@ -3,59 +3,47 @@
 
  <div class="container-fluid">
      <div class="block-header">
-         <h2>PRODUCTS</h2>
+         <h2>CUSTOMERS</h2>
      </div>
 
-     <?php if ($this->session->flashdata('success')) : ?>
-         <div class="alert alert-success alert-dismissible" role="alert">
-             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-             <?= $this->session->flashdata('success') ?>
-         </div>
-     <?php elseif ($this->session->flashdata('error')) : ?>
-         <div class="alert alert-danger alert-dismissible" role="alert">
-             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-             <?= $this->session->flashdata('error') ?>
-         </div>
-     <?php endif; ?>
+
      <div class="row clearfix">
          <div class="row clearfix">
              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                  <div class="card">
-                     <div class="header">
-                         <a href="<?= site_url('produk-tambah'); ?>" class="btn btn-primary"> Tambah</a>
-                     </div>
                      <div class="body">
                          <div class="table-responsive">
                              <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                  <thead>
                                      <tr>
                                          <th>#</th>
-                                         <th>Image</th>
-                                         <th>Product</th>
-                                         <th>Price</th>
+                                         <th>Customer</th>
+                                         <th>Email</th>
+                                         <th>Telepon</th>
+                                         <th>Address</th>
                                          <th>More</th>
                                      </tr>
                                  </thead>
                                  <tfoot>
                                      <tr>
                                          <th>#</th>
-                                         <th>Image</th>
-                                         <th>Product</th>
-                                         <th>Price</th>
+                                         <th>Customer</th>
+                                         <th>Email</th>
+                                         <th>Telepon</th>
+                                         <th>Address</th>
                                          <th>More</th>
                                      </tr>
                                  </tfoot>
                                  <tbody>
-                                     <?php foreach ($produk as $data) : ?>
+                                     <?php foreach ($pelanggan as $data) : ?>
                                          <tr>
                                              <td><?= $no++; ?></td>
-                                             <td> <img src="<?= base_url('assets/img/produk/' . $data['img_produk']); ?>" alt="" width="100" height="80"></td>
-                                             <td><?= $data['nama_produk']; ?></td>
-                                             <td><?= $data['harga_produk']; ?></td>
+                                             <td><?= $data['nama_pel']; ?></td>
+                                             <td><?= $data['email_pel']; ?></td>
+                                             <td><?= $data['notelp_pel']; ?></td>
+                                             <td><?= $data['alamat_pel']; ?></td>
                                              <td>
-                                                 <a href="<?= site_url('produk-detail/' . $data['id_produk']); ?>" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
-                                                 <a href="<?= site_url('produk-ubah/' . $data['id_produk']); ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-                                                 <a href="<?= site_url('produk-hapus/' . $data['id_produk']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin?')"><i class="fa fa-trash"></i></a>
+                                                 <a href="" class="btn btn-info btn-sm">Detail</a>
                                              </td>
                                          </tr>
                                      <?php endforeach; ?>
