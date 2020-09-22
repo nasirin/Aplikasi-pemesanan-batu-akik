@@ -3,16 +3,26 @@
 
  <div class="container-fluid">
      <div class="block-header">
-         <h2>ORDERS</h2>
+         <h2>PRODUCTS</h2>
      </div>
 
-
+     <?php if ($this->session->flashdata('success')) : ?>
+         <div class="alert alert-success alert-dismissible" role="alert">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <?= $this->session->flashdata('success') ?>
+         </div>
+     <?php elseif ($this->session->flashdata('error')) : ?>
+         <div class="alert alert-danger alert-dismissible" role="alert">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <?= $this->session->flashdata('error') ?>
+         </div>
+     <?php endif; ?>
      <div class="row clearfix">
          <div class="row clearfix">
              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                  <div class="card">
                      <div class="header">
-                         <a href="<?= site_url('pes-tambah'); ?>" class="btn btn-primary"> Tambah</a>
+                         <a href="<?= site_url('produk-tambah'); ?>" class="btn btn-primary"> Tambah</a>
                      </div>
                      <div class="body">
                          <div class="table-responsive">
@@ -20,34 +30,32 @@
                                  <thead>
                                      <tr>
                                          <th>#</th>
-                                         <th>Customer</th>
-                                         <th>Produk</th>
-                                         <th>Status</th>
-                                         <th>Order date</th>
+                                         <th>Product</th>
+                                         <th>Price</th>
                                          <th>More</th>
                                      </tr>
                                  </thead>
                                  <tfoot>
                                      <tr>
                                          <th>#</th>
-                                         <th>Customer</th>
-                                         <th>Produk</th>
-                                         <th>Status</th>
-                                         <th>Order date</th>
+                                         <th>Product</th>
+                                         <th>Price</th>
                                          <th>More</th>
                                      </tr>
                                  </tfoot>
                                  <tbody>
-                                     <tr>
-                                         <td>Tiger Nixon</td>
-                                         <td>System Architect</td>
-                                         <td>Edinburgh</td>
-                                         <td>61</td>
-                                         <td>2011/04/25</td>
-                                         <td>
-                                             <a href="" class="btn btn-info btn-sm">Detail</a>
-                                         </td>
-                                     </tr>
+                                     <?php foreach ($produk as $data) : ?>
+                                         <tr>
+                                             <td><?= $no++; ?></td>
+                                             <td><?= $data['nama_produk']; ?></td>
+                                             <td><?= $data['harga_produk']; ?></td>
+                                             <td>
+                                                 <a href="<?= site_url('produk-detail/' . $data['id_produk']); ?>" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                                                 <a href="<?= site_url('produk-ubah/' . $data['id_produk']); ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                                                 <a href="<?= site_url('produk-hapus/' . $data['id_produk']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin?')"><i class="fa fa-trash"></i></a>
+                                             </td>
+                                         </tr>
+                                     <?php endforeach; ?>
                                  </tbody>
                              </table>
                          </div>

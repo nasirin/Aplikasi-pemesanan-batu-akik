@@ -53,10 +53,17 @@ $route['default_controller'] = 'Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+//AUTH
+$route['auth'] = 'auth';
+$route['login'] = 'auth/login';
+$route['logout'] = 'auth/logout';
+$route['profil/(:num)'] = 'auth/profil/$1';
 
 // PESANAN
 $route['pesanan'] = 'Order';
-$route['pesananTambah'] = 'Order/tambah';
+$route['pes-tambah'] = 'Order/tambah'; //for debug
+$route['pes-simpan'] = 'Order/simpan'; //for debug
+$route['pes-detail/(:num)'] = 'Order/detail/$1';
 
 // USER
 $route['user'] = 'User';
@@ -66,3 +73,12 @@ $route['user-edit/(:num)'] = 'User/edit/$1';
 $route['user-ubah/(:num)'] = 'User/ubah/$1';
 $route['user-hapus/(:num)'] = 'User/hapus/$1';
 $route['user-detail/(:num)'] = 'User/detail/$1';
+
+// PRODUK
+$route['produk'] = 'Produk';
+$route['produk-tambah'] = 'Produk/tambah';
+$route['produk-simpan'] = 'Produk/simpan';
+$route['produk-ubah/(:num)'] = 'Produk/ubah/$1';
+$route['produk-ganti/(:num)'] = 'Produk/ganti/$1';
+$route['produk-hapus/(:num)'] = 'Produk/hapus/$1';
+$route['produk-detail/(:num)'] = 'Produk/detail/$1';

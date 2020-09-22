@@ -5,14 +5,14 @@
             <img src="<?= base_url('assets/template/backend/') ?>images/user.png" width="48" height="48" alt="User" />
         </div>
         <div class="info-container">
-            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-            <div class="email">john.doe@example.com</div>
+            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= ucwords($this->fungsi->user_login()->nama_user); ?></div>
+            <div class="email"><?= ucwords($this->fungsi->user_login()->level); ?></div>
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                 <ul class="dropdown-menu pull-right">
-                    <li><a href="#"><i class="material-icons">person</i>Profile</a></li>
+                    <li><a href="<?= site_url('profil/' . $this->session->userdata('id')); ?>"><i class="material-icons">person</i>Profile</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#"><i class="material-icons">input</i>Sign Out</a></li>
+                    <li><a href="<?= site_url('logout'); ?>"><i class="material-icons">input</i>Sign Out</a></li>
                 </ul>
             </div>
         </div>

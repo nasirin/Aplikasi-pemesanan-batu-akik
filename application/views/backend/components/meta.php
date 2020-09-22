@@ -33,10 +33,8 @@
 
     <!-- Jquery Core Js -->
     <script src="<?= base_url('assets/template/backend/') ?>plugins/jquery/jquery.min.js"></script>
-
     <!-- Bootstrap Core Js -->
     <script src="<?= base_url('assets/template/backend/') ?>plugins/bootstrap/js/bootstrap.js"></script>
-
     <!-- font awesome -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
