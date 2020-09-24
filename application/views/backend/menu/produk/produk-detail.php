@@ -9,6 +9,8 @@
                         </div>
                         <div class="content-area">
                             <h3><?= ucwords($produk['nama_produk']); ?></h3>
+                            <p><?= $produk['jenis_batu']; ?></p>
+                            <p><?= $produk['berat_batu']; ?></p>
                             <p>Rp.<?= number_format($produk['harga_produk'], 0, ',', '.'); ?></p>
                         </div>
                     </div>

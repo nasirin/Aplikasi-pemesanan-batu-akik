@@ -22,9 +22,21 @@
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="file"class="form-control" name="gambar" required>
+                                <input type="file" class="form-control" name="gambar" required>
                             </div>
-                        </div>                       
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" class="form-control" name="jenis" required>
+                                <label class="form-label">Jenis</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="number" min="0" class="form-control" name="berat" required>
+                                <label class="form-label">Berat</label>
+                            </div>
+                        </div>
                         <div class="form-group form-float">
                             <div class="form-line">
                                 <textarea rows="4" class="form-control no-resize" placeholder="Description.." name="desc" required></textarea>

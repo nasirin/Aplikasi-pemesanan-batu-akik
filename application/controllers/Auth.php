@@ -18,12 +18,8 @@ class Auth extends CI_Controller
     public function login()
     {
         $post = $this->input->post(null, true);
-        // var_dump($post);
-        // die;
         $query = $this->M_auth->get($post)->row_array();
 
-        // var_dump($query);
-        // die;
 
         if ($query) {
             if ($query['status_user'] == 'on') {
@@ -33,7 +29,7 @@ class Auth extends CI_Controller
                     'level' => $query['level']
                 ];
                 $this->session->set_userdata($data);
-                redirect();
+                redirect('admin');
             } else {
                 $this->session->set_flashdata('error', 'Account is not active!');
                 redirect('auth');

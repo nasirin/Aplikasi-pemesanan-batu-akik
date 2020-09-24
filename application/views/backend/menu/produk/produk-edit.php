@@ -25,8 +25,20 @@
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <img src="<?= base_url('assets/img/produk/'.$produk['img_produk']); ?>" width="200" alt="">
+                                <img src="<?= base_url('assets/img/produk/' . $produk['img_produk']); ?>" width="200" alt="">
                                 <input type="file" class="form-control" name="gambar" value="<?= $produk['img_produk']; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" class="form-control" name="jenis" value="<?= $produk['jenis_batu']; ?>" required>
+                                <label class="form-label">Jenis</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="number" min="0" class="form-control" name="berat" value="<?= $produk['berat_batu']; ?>" required>
+                                <label class="form-label">Berat</label>
                             </div>
                         </div>
                         <div class="form-group form-float">

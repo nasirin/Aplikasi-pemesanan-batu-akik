@@ -18,6 +18,15 @@ function check_not_login()
     }
 }
 
+function check_cust_not_login()
+{
+    $ci = &get_instance();
+    $user_session = $ci->session->userdata('nama');
+    if (!$user_session) {
+        redirect('ulogin');
+    }
+}
+
 function cek_admin()
 {
     $ci = &get_instance();

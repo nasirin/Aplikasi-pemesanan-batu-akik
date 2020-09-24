@@ -81,7 +81,7 @@ class Produk extends CI_Controller
                 $post['gambar'] = $this->upload->data('file_name');
                 $this->M_produk->ubah($post, $id);
                 if ($this->db->affected_rows() > 0) {
-                    $this->session->set_flashdata('success', 'Data successfully added');
+                    $this->session->set_flashdata('success', 'Data successfully updated');
                     redirect('produk');
                 } else {
                     $this->session->set_flashdata('error', 'Data Failded updated');

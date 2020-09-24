@@ -19,8 +19,10 @@ class M_produk extends CI_Model
         $data = [
             'nama_produk' => $post['nama'],
             'harga_produk' => $post['harga'],
-            'desc_produk' => $post['desc'],
             'img_produk' => $post['gambar'],
+            'desc_produk' => $post['desc'],
+            'jenis_batu' => $post['jenis'],
+            'berat_batu' => $post['berat'],
             'created_produk' => date('ymd'),
         ];
 

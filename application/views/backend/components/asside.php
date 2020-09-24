@@ -34,10 +34,16 @@
             </li>
             <li class="<?= $active == 'produk' ? 'active' : ''; ?>">
                 <a href="<?= site_url('produk'); ?>">
-                    <i class="material-icons">layers</i>
+                    <i class="material-icons">widgets</i>
                     <span>Produk</span>
                 </a>
             </li>
+            <!-- <li class="<?= $active == 'produk' ? 'active' : ''; ?>">
+                <a href="<?= site_url('produk'); ?>">
+                    <i class="material-icons">layers</i>
+                    <span>Produk</span>
+                </a>
+            </li> -->
             <li class="<?= $active == 'pelanggan' ? 'active' : ''; ?>">
                 <a href="<?= site_url('pelanggan'); ?>">
                     <i class="material-icons">people</i>

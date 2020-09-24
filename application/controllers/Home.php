@@ -6,15 +6,15 @@ class Home extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		check_not_login();
+		$this->load->model('M_produk');
 	}
-	
+
 	public function index()
 	{
-
 		$data = [
-			'active' => 'home'
+			'active' => 'home',
+			'produk' => $this->M_produk->get()->result_array() //panggil produk terakhir dengan limit 8
 		];
-		$this->layout->load('backend/index', 'backend/menu/home-view', $data);
+		$this->layout->load('frontend/index', 'frontend/menu/home-view', $data);
 	}
 }
