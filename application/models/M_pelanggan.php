@@ -12,6 +12,11 @@ class M_pelanggan extends CI_Model
         }
     }
 
+    public function info()
+    {
+        return $this->db->get('pelanggan');
+    }
+
     public function daftar($post)
     {
         $data = [

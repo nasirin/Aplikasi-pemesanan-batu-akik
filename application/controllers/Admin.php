@@ -7,13 +7,20 @@ class Admin extends CI_Controller
 	{
 		parent::__construct();
 		check_not_login();
+		$this->load->model('M_order');
+		$this->load->model('M_pelanggan');
 	}
 
 	public function index()
 	{
 
 		$data = [
-			'active' => 'home'
+			'no' => 1,
+			'active' => 'home',
+			'newOrder' => $this->M_order->info($info = 'pending')->num_rows(),
+			'success' => $this->M_order->info($info = 'success')->num_rows(),
+			'order' => $this->M_order->info($info = 'pending')->result_array(),
+			'customers' => $this->M_pelanggan->info()->num_rows(),
 		];
 		$this->layout->load('backend/index', 'backend/menu/home-view', $data);
 	}

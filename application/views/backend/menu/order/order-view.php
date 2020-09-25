@@ -5,18 +5,22 @@
      <div class="block-header">
          <h2>ORDERS</h2>
      </div>
-
+     <?php if ($this->session->flashdata('success')) : ?>
+         <div class="alert alert-success" role="alert">
+             <?= $this->session->flashdata('success'); ?>
+         </div>
+     <?php endif; ?>
 
      <div class="row clearfix">
          <div class="row clearfix">
              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                  <div class="card">
                      <div class="header">
-                         <a href="<?= site_url('pes-tambah'); ?>" class="btn btn-primary"> Tambah</a>
+                         <a href="" class="btn btn-primary"> Print</a>
                      </div>
                      <div class="body">
                          <div class="table-responsive">
-                             <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                             <table class="table table-bordered table-striped table-hover dataTable" id="tablepesanan">
                                  <thead>
                                      <tr>
                                          <th>#</th>
@@ -38,16 +42,21 @@
                                      </tr>
                                  </tfoot>
                                  <tbody>
-                                     <tr>
-                                         <td>Tiger Nixon</td>
-                                         <td>System Architect</td>
-                                         <td>Edinburgh</td>
-                                         <td>61</td>
-                                         <td>2011/04/25</td>
-                                         <td>
-                                             <a href="" class="btn btn-info btn-sm">Detail</a>
-                                         </td>
-                                     </tr>
+                                     <?php foreach ($pesanan as $data) : ?>
+                                         <tr>
+                                             <td><?= $no++; ?></td>
+                                             <td><?= ucfirst($data['nama_pel']); ?></td>
+                                             <td><?= ucfirst($data['nama_produk']); ?></td>
+                                             <td><?= ucfirst($data['status_pesanan']); ?></td>
+                                             <td><?= date('d M Y', strtotime($data['created_pesanan'])); ?></td>
+                                             <td>
+                                                 <a href="<?= site_url('pes-detail/' . $data['id_pesanan']); ?>" target="_blank" class="btn btn-info btn-sm">Detail</a>
+                                                 <?php if ($data['status_pesanan'] == 'process') : ?>
+                                                     <a href="<?= site_url('pes-selesai/' . $data['id_pesanan']); ?>" onclick="return confirm('Apakah Pesanan Benar Selesai?')" class="btn btn-success btn-sm">Done</a>
+                                                 <?php endif; ?>
+                                             </td>
+                                         </tr>
+                                     <?php endforeach; ?>
                                  </tbody>
                              </table>
                          </div>
@@ -70,3 +79,6 @@
  <script src="<?= base_url('assets/template/backend/') ?>plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
 
  <script src="<?= base_url('assets/template/backend/') ?>js/pages/tables/jquery-datatable.js"></script>
+ <script>
+     $('#tablepesanan').DataTable();
+ </script>

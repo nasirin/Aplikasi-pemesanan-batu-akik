@@ -20,7 +20,9 @@ class Order extends CI_Controller
     public function index()
     {
         $data = [
-            'active' => 'order'
+            'active' => 'order',
+            'pesanan' => $this->M_order->get()->result_array(),
+            'no' => 1
         ];
         $this->layout->load('backend/index', 'backend/menu/order/order-view', $data);
     }
@@ -81,5 +83,25 @@ class Order extends CI_Controller
             $this->session->set_flashdata('error', 'Silahkan masukan bukti pembayaran');
             redirect('shop-checkout/' . $id);
         }
+    }
+
+    public function selesai($id)
+    {
+        $this->M_order->selesai($id);
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata('success', 'Order Already Done');
+            redirect('pesanan');
+        }
+    }
+
+    public function detail($id)
+    {
+        $data = [
+            'active' => 'order',
+            'detail' => $this->M_order->get($id)->row_array(),
+            'pembayaran' => $this->M_konfirmasi->get($id)->row_array()
+        ];
+
+        $this->layout->load('backend/invoice', 'backend/menu/order/order-detail', $data);
     }
 }

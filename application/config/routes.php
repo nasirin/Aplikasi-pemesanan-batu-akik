@@ -19,9 +19,10 @@ $route['profil/(:num)'] = 'auth/profil/$1';
 $route['pesanan'] = 'Order';
 $route['pes-tambah'] = 'Order/tambah'; //for debug
 $route['pes-simpan/(:num)'] = 'Order/simpan/$1'; //for debug
-$route['pes-detail/(:num)'] = 'Order/detail/$1';
+$route['pes-detail/(:any)'] = 'Order/detail/$1';
 $route['pes-hapus/(:any)'] = 'Order/hapus/$1';
 $route['pes-confirm/(:any)'] = 'Order/confirm/$1';
+$route['pes-selesai/(:any)'] = 'Order/selesai/$1';
 
 
 // USER

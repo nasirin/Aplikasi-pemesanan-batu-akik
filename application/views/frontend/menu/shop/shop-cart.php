@@ -65,6 +65,7 @@
                                          <a href="<?= site_url('pes-hapus/' . $data['id_pesanan']); ?>" class="btn btn-danger">Cancel</a>
                                      <?php else : ?>
                                          <a href="<?= site_url('print/' . $data['id_pesanan']); ?>" target="_blank" class="btn btn-info">Invoice</a>
+                                         <a href="#" target="_blank" class="btn btn-danger">Return</a>
                                      <?php endif; ?>
 
                                  </td>

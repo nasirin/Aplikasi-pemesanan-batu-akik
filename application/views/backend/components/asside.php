@@ -21,7 +21,7 @@
         <ul class="list">
             <li class="header">MAIN NAVIGATION</li>
             <li class="<?= $active == 'home' ? 'active' : ''; ?>">
-                <a href="<?= base_url(); ?>">
+                <a href="<?= base_url('admin'); ?>">
                     <i class="material-icons">home</i>
                     <span>Home</span>
                 </a>
@@ -32,18 +32,18 @@
                     <span>Pesanan</span>
                 </a>
             </li>
+            <li class="<?= $active == 'return' ? 'active' : ''; ?>">
+                <a href="#">
+                    <i class="material-icons">refresh</i>
+                    <span>Return pesanan</span>
+                </a>
+            </li>
             <li class="<?= $active == 'produk' ? 'active' : ''; ?>">
                 <a href="<?= site_url('produk'); ?>">
                     <i class="material-icons">widgets</i>
                     <span>Produk</span>
                 </a>
             </li>
-            <!-- <li class="<?= $active == 'produk' ? 'active' : ''; ?>">
-                <a href="<?= site_url('produk'); ?>">
-                    <i class="material-icons">layers</i>
-                    <span>Produk</span>
-                </a>
-            </li> -->
             <li class="<?= $active == 'pelanggan' ? 'active' : ''; ?>">
                 <a href="<?= site_url('pelanggan'); ?>">
                     <i class="material-icons">people</i>

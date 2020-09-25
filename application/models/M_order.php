@@ -6,14 +6,25 @@ class M_order extends CI_Model
     {
         if ($id) {
             return  $this->db->from('pesanan')
-                ->join('produk', 'produk.id_produk = pesanan.id_produk','left')
-                ->join('pelanggan', 'pelanggan.id_pel = pesanan.id_pelanggan','left')
+                ->join('produk', 'produk.id_produk = pesanan.id_produk', 'left')
+                ->join('pelanggan', 'pelanggan.id_pel = pesanan.id_pelanggan', 'left')
                 ->where('id_pesanan', $id)
                 ->get();
         } else {
             return $this->db->from('pesanan')
+                ->join('produk', 'produk.id_produk = pesanan.id_produk', 'left')
+                ->join('pelanggan', 'pelanggan.id_pel = pesanan.id_pelanggan', 'left')
                 ->get();
         }
+    }
+
+    public function info($info)
+    {
+        return $this->db->from('pesanan')
+            ->join('pelanggan', 'pelanggan.id_pel = pesanan.id_pelanggan')
+            ->join('produk', 'produk.id_produk = pesanan.id_produk')
+            ->where('status_pesanan', $info)
+            ->get();
     }
 
     public function get_pes($id)
@@ -61,6 +72,17 @@ class M_order extends CI_Model
         $data = [
             'ket_pesanan' => $post['keterangan'],
             'status_pesanan' => 'process',
+            'updated_pesanan' => date('dmy'),
+        ];
+
+        $this->db->where('id_pesanan', $id)
+            ->update('pesanan', $data);
+    }
+
+    public function selesai($id)
+    {
+        $data = [
+            'status_pesanan' => 'success',
             'updated_pesanan' => date('dmy'),
         ];
 
