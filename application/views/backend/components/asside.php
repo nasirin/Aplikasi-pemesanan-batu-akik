@@ -33,7 +33,7 @@
                 </a>
             </li>
             <li class="<?= $active == 'return' ? 'active' : ''; ?>">
-                <a href="#">
+                <a href="<?= site_url('return'); ?>">
                     <i class="material-icons">refresh</i>
                     <span>Return pesanan</span>
                 </a>

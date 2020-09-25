@@ -24,6 +24,13 @@ $route['pes-hapus/(:any)'] = 'Order/hapus/$1';
 $route['pes-confirm/(:any)'] = 'Order/confirm/$1';
 $route['pes-selesai/(:any)'] = 'Order/selesai/$1';
 
+// RETURN 
+$route['return'] = 'Pengembalian';
+$route['pengajuan/(:any)'] = 'Pengembalian/pengajuan/$1';
+$route['pengajuan/tambah/(:any)'] = 'Pengembalian/tambah/$1';
+$route['pengajuan/approve/(:num)'] = 'Pengembalian/approve/$1';
+$route['pengajuan/reject/(:num)'] = 'Pengembalian/reject/$1';
+
 
 // USER
 $route['user'] = 'User';
