@@ -16,7 +16,7 @@
              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                  <div class="card">
                      <div class="header">
-                         <a href="" class="btn btn-primary"> Print</a>
+                         <a href="<?= site_url('cetak/penjualan'); ?>" target="_blank" class="btn btn-primary"> Print</a>
                      </div>
                      <div class="body">
                          <div class="table-responsive">

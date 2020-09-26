@@ -78,3 +78,5 @@ $route['signout'] = 'Login/signout';
 
 // PRINT
 $route['print/(:any)'] = 'Cetak/cetak_invoice/$1';
+$route['cetak/penjualan'] = 'Cetak/cetak_penjualan';
+$route['cetak/pelanggan'] = 'Cetak/cetak_pelanggan';

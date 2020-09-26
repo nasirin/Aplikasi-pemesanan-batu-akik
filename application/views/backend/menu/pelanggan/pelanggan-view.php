@@ -11,9 +11,12 @@
          <div class="row clearfix">
              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                  <div class="card">
+                     <div class="header">
+                         <a href="<?= site_url('cetak/pelanggan'); ?>" class="btn btn-primary"> Print</a>
+                     </div>
                      <div class="body">
                          <div class="table-responsive">
-                             <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                             <table class="table table-bordered table-striped table-hover dataTable js-basic-example">
                                  <thead>
                                      <tr>
                                          <th>#</th>
@@ -69,3 +72,6 @@
  <script src="<?= base_url('assets/template/backend/') ?>plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
 
  <script src="<?= base_url('assets/template/backend/') ?>js/pages/tables/jquery-datatable.js"></script>
+ <!-- <script>
+     $('.js-exportable').DataTable();
+ </script> -->
