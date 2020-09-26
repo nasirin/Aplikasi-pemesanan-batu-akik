@@ -50,12 +50,14 @@
                     <span>Pelanggan</span>
                 </a>
             </li>
-            <li class="<?= $active == 'user' ? 'active' : ''; ?>">
-                <a href="<?= site_url('user'); ?>">
-                    <i class="material-icons">people</i>
-                    <span>User</span>
-                </a>
-            </li>
+            <?php if ($this->session->userdata('level') == 'super admin') : ?>
+                <li class="<?= $active == 'user' ? 'active' : ''; ?>">
+                    <a href="<?= site_url('user'); ?>">
+                        <i class="material-icons">people</i>
+                        <span>User</span>
+                    </a>
+                </li>
+            <?php endif ?>
         </ul>
     </div>
 </aside>

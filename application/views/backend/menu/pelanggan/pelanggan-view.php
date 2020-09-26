@@ -46,7 +46,7 @@
                                              <td><?= $data['notelp_pel']; ?></td>
                                              <td><?= $data['alamat_pel']; ?></td>
                                              <td>
-                                                 <a href="" class="btn btn-info btn-sm">Detail</a>
+                                                 <a href="<?= site_url('pelanggan/detail/'.$data['id_pel']); ?>" class="btn btn-info btn-sm">Detail</a>
                                              </td>
                                          </tr>
                                      <?php endforeach; ?>

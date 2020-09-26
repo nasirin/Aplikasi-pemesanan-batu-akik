@@ -55,7 +55,9 @@
                                              <td>
                                                  <a href="<?= site_url('produk-detail/' . $data['id_produk']); ?>" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                                                  <a href="<?= site_url('produk-ubah/' . $data['id_produk']); ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-                                                 <a href="<?= site_url('produk-hapus/' . $data['id_produk']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin?')"><i class="fa fa-trash"></i></a>
+                                                 <?php if ($this->session->userdata('level') == 'super admin') : ?>
+                                                     <a href="<?= site_url('produk-hapus/' . $data['id_produk']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin?')"><i class="fa fa-trash"></i></a>
+                                                 <?php endif; ?>
                                              </td>
                                          </tr>
                                      <?php endforeach; ?>

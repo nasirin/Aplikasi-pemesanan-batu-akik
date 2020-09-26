@@ -53,6 +53,7 @@ $route['produk-detail/(:num)'] = 'Produk/detail/$1';
 
 // PELANGGAN
 $route['pelanggan'] = 'Pelanggan';
+$route['pelanggan/detail/(:num)'] = 'Pelanggan/detail/$1';
 
 // SHOP
 $route['shop'] = 'Shop';
