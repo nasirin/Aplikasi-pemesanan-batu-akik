@@ -5,17 +5,17 @@ class M_return extends CI_Model
     public function get($id = null)
     {
         if ($id) {
-            return $this->db->from('pesanan_return')
-                ->join('produk', 'produk.id_produk = pesanan_return.id_produk', 'left')
-                ->join('pesanan', 'pesanan.id_pesanan = pesanan_return.id_pesanan', 'left')
-                ->join('pelanggan', 'pelanggan.id_pel = pesanan_return.id_pelanggan', 'left')
-                ->where('id_return', $id)
+            return $this->db->from('pesananreturn')
+                ->join('produk', 'produk.idProduk = pesananreturn.idProduk', 'left')
+                ->join('pesanan', 'pesanan.idPesanan = pesananreturn.idPesanan', 'left')
+                ->join('pelanggan', 'pelanggan.id_pel = pesananreturn.idPel', 'left')
+                ->where('idReturn', $id)
                 ->get();
         } else {
-            return $this->db->from('pesanan_return')
-                ->join('produk', 'produk.id_produk = pesanan_return.id_produk', 'left')
-                ->join('pesanan', 'pesanan.id_pesanan = pesanan_return.id_pesanan', 'left')
-                ->join('pelanggan', 'pelanggan.id_pel = pesanan_return.id_pelanggan', 'left')
+            return $this->db->from('pesananreturn')
+                ->join('produk', 'produk.idProduk = pesananreturn.idProduk', 'left')
+                ->join('pesanan', 'pesanan.idPesanan = pesananreturn.idPesanan', 'left')
+                ->join('pelanggan', 'pelanggan.id_pel = pesananreturn.idPel', 'left')
                 ->get();
         }
     }
@@ -23,34 +23,34 @@ class M_return extends CI_Model
     public function tambah($post, $id)
     {
         $data = [
-            'id_produk' => $post['produk'],
-            'id_pelanggan' => $this->session->userdata('idUser'),
-            'id_pesanan' => $id,
-            'qty_return' => $post['qty'],
-            'alasan_return' => $post['alasan'],
-            'status_return' => 'submission', //pengajuan awal
-            'created_return' => date('dmy'),
+            'idProduk' => $post['produk'],
+            'idPel' => $this->session->userdata('idUser'),
+            'idPesanan' => $id,
+            'qtyReturn' => $post['qty'],
+            'alasan' => $post['alasan'],
+            'statusReturn' => 'submission', //pengajuan awal
+            
         ];
-        $this->db->insert('pesanan_return', $data);
+        $this->db->insert('pesananreturn', $data);
     }
 
     public function approve($id)
     {
         $data = [
-            'status_return' => 'approve',
-            'updated_return' => date('dmy'),
+            'statusReturn' => 'approve',
+            'updatedAt' => date('dmy'),
         ];
-        $this->db->where('id_return', $id)
-            ->update('pesanan_return', $data);
+        $this->db->where('idReturn', $id)
+            ->update('pesananreturn', $data);
     }
 
     public function reject($id)
     {
         $data = [
-            'status_return' => 'rejected',
-            'updated_return' => date('dmy'),
+            'statusReturn' => 'rejected',
+            'updatedAt' => date('dmy'),
         ];
-        $this->db->where('id_return', $id)
-            ->update('pesanan_return', $data);
+        $this->db->where('idReturn', $id)
+            ->update('pesananreturn', $data);
     }
 }

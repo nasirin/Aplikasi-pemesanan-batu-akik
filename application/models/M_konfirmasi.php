@@ -6,16 +6,15 @@ class M_konfirmasi extends CI_Model
     public function get($id)
     {
         return $this->db->from('konfirmasi')
-            ->where('id_pesanan', $id)
+            ->where('idPesanan', $id)
             ->get();
     }
     public function simpan($post, $id)
     {
         $data = [
-            'id_pelanggan' => $this->session->userdata('idUser'),
-            'id_pesanan' => $id,
-            'gambar_pesanan' => $post['bukti'],
-            'created_konfirmasi' => date('ymd'),
+            'idPel' => $this->session->userdata('idUser'),
+            'idPesanan' => $id,
+            'gambar' => $post['bukti'],
         ];
 
         $this->db->insert('konfirmasi', $data);
