@@ -65,7 +65,10 @@
                                          <a href="<?= site_url('pes-hapus/' . $data['id_pesanan']); ?>" class="btn btn-danger">Cancel</a>
                                      <?php else : ?>
                                          <a href="<?= site_url('print/' . $data['id_pesanan']); ?>" target="_blank" class="btn btn-info">Invoice</a>
-                                         <?php if ($return['id_pesanan'] != $data['id_pesanan']) : ?>
+                                         <?php if ($data['status_pesanan'] == 'process') : ?>
+                                             <a href="<?= site_url('pes-diterima/' . $data['id_pesanan']); ?>" onclick="return confirm('Pastikan Barang anda sudah sesuai')" class="btn btn-success">Di terima</a>
+                                         <?php endif; ?>
+                                         <?php if ($data['status_pesanan'] == 'diterima') : ?>
                                              <a href="<?= site_url('pengajuan/' . $data['id_pesanan']); ?>" class="btn btn-danger">Return</a>
                                          <?php endif; ?>
                                      <?php endif; ?>

@@ -6,14 +6,14 @@ class M_order extends CI_Model
     {
         if ($id) {
             return  $this->db->from('pesanan')
-                ->join('produk', 'produk.id_produk = pesanan.id_produk', 'left')
-                ->join('pelanggan', 'pelanggan.id_pel = pesanan.id_pelanggan', 'left')
-                ->where('id_pesanan', $id)
+                ->join('produk', 'produk.idProduk = pesanan.idProduk', 'left')
+                ->join('pelanggan', 'pelanggan.idPelanggan = pesanan.idPel', 'left')
+                ->where('idPesanan', $id)
                 ->get();
         } else {
             return $this->db->from('pesanan')
-                ->join('produk', 'produk.id_produk = pesanan.id_produk', 'left')
-                ->join('pelanggan', 'pelanggan.id_pel = pesanan.id_pelanggan', 'left')
+                ->join('produk', 'produk.idProduk = pesanan.idProduk', 'left')
+                ->join('pelanggan', 'pelanggan.idPelanggan = pesanan.idPel', 'left')
                 ->get();
         }
     }
@@ -21,24 +21,25 @@ class M_order extends CI_Model
     public function info($info)
     {
         return $this->db->from('pesanan')
-            ->join('pelanggan', 'pelanggan.id_pel = pesanan.id_pelanggan')
-            ->join('produk', 'produk.id_produk = pesanan.id_produk')
-            ->where('status_pesanan', $info)
+            ->join('pelanggan', 'pelanggan.idPelanggan = pesanan.idPel')
+            ->join('produk', 'produk.idProduk = pesanan.idProduk')
+            ->where('statusPesanan', $info)
             ->get();
     }
 
     public function get_pes($id)
     {
         return $this->db->from('pesanan')
-            ->join('pelanggan', 'pelanggan.id_pel = pesanan.id_pelanggan')
-            ->join('produk', 'produk.id_produk = pesanan.id_produk')
-            ->where('id_pelanggan', $id)
+            ->join('pelanggan', 'pelanggan.idPelanggan = pesanan.idPel')
+            ->join('produk', 'produk.idProduk = pesanan.idProduk')
+            ->where('statusPesanan !=','batal')
+            ->where('idPel', $id)
             ->get();
     }
 
     public function invoice()
     {
-        $nip = $this->db->query("SELECT MAX(RIGHT(id_pesanan,3)) AS id FROM pesanan");
+        $nip = $this->db->query("SELECT MAX(RIGHT(idPesanan,3)) AS id FROM pesanan");
         $kd = "";
         if ($nip->num_rows() > 0) {
             foreach ($nip->result() as $k) {
@@ -54,14 +55,13 @@ class M_order extends CI_Model
     public function simpan($post, $isi)
     {
         $data = [
-            'id_pesanan' => $this->invoice(),
-            'id_pelanggan' => $this->session->userdata('idUser'),
-            'id_produk' => $post['id_produk'],
-            'ukuran_cincin' => $isi['ukuran'],
-            'qty_pesanan' => $isi['qty'],
-            'ket_pesanan' => $isi['ket'],
-            'status_pesanan' => 'pending',
-            'created_pesanan' => date('dmy'),
+            'idPesanan' => $this->invoice(),
+            'idPel' => $this->session->userdata('idUser'),
+            'idProduk' => $post['idProduk'],
+            'ukuranCincin' => $isi['ukuran'],
+            'qtyPesanan' => $isi['qty'],
+            'ketPesanan' => $isi['ket'],
+            'statusPesanan' => 'pending',
         ];
 
         $this->db->insert('pesanan', $data);
@@ -70,30 +70,45 @@ class M_order extends CI_Model
     public function ubah($post, $id)
     {
         $data = [
-            'ket_pesanan' => $post['keterangan'],
-            'status_pesanan' => 'process',
-            'updated_pesanan' => date('dmy'),
+            'ketPesanan' => $post['keterangan'],
+            'statusPesanan' => 'process',
+            'updatedAt' => date('dmy'),
         ];
 
-        $this->db->where('id_pesanan', $id)
+        $this->db->where('idPesanan', $id)
             ->update('pesanan', $data);
     }
 
     public function selesai($id)
     {
         $data = [
-            'status_pesanan' => 'success',
-            'updated_pesanan' => date('dmy'),
+            'statusPesanan' => 'success',
+            'updatedAt' => date('dmy'),
         ];
 
-        $this->db->where('id_pesanan', $id)
+        $this->db->where('idPesanan', $id)
+            ->update('pesanan', $data);
+    }
+
+    public function diterima($id)
+    {
+        $data = [
+            'statusPesanan' => 'diterima',
+            'updatedAt' => date('dmy'),
+        ];
+
+        $this->db->where('idPesanan', $id)
             ->update('pesanan', $data);
     }
 
     public function hapus($id)
     {
-        $this->db->from('pesanan')
-            ->where('id_pesanan', $id)
-            ->delete('pesanan');
+        $data = [
+            'statusPesanan' => 'batal',
+            'updatedAt' => date('dmy')
+        ];
+
+        $this->db->where('idPesanan', $id)
+            ->update('pesanan', $data);
     }
 }

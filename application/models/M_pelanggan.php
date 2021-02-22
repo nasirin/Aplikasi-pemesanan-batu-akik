@@ -20,12 +20,11 @@ class M_pelanggan extends CI_Model
     public function daftar($post)
     {
         $data = [
-            'nama_pel' => $post['nama'],
-            'email_pel' => $post['email'],
-            'pass_pel' => $post['pass'],
-            'notelp_pel' => $post['notelp'],
-            'alamat_pel' => $post['alamat'],
-            'created_pel' => date('dmy'),
+            'namaPelanggan' => $post['nama'],
+            'emailPelanggan' => $post['email'],
+            'passPelanggan' => $post['pass'],
+            'notelpPelanggan' => $post['notelp'],
+            'alamatPelanggan' => $post['alamat'],
         ];
         $this->db->insert('pelanggan', $data);
     }
@@ -33,8 +32,8 @@ class M_pelanggan extends CI_Model
     public function login($post)
     {
         return $this->db->from('pelanggan')
-            ->where('email_pel', $post['email'])
-            ->where('pass_pel', $post['pass'])
+            ->where('emailPelanggan', $post['email'])
+            ->where('passPelanggan', $post['pass'])
             ->get();
     }
 }

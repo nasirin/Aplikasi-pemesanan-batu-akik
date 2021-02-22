@@ -18,14 +18,17 @@ class Auth extends CI_Controller
     public function login()
     {
         $post = $this->input->post(null, true);
+        
         $query = $this->M_auth->get($post)->row_array();
+        // var_dump($query);
+        // die;
 
 
         if ($query) {
-            if ($query['status_user'] == 'on') {
+            if ($query['statusUser'] == 'Aktif') {
                 $data = [
-                    'id' => $query['id_user'],
-                    'nama' => $query['nama_user'],
+                    'id' => $query['idUser'],
+                    'nama' => $query['namaUser'],
                     'level' => $query['level']
                 ];
                 $this->session->set_userdata($data);

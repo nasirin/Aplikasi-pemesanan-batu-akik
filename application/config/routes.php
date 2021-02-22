@@ -23,6 +23,7 @@ $route['pes-detail/(:any)'] = 'Order/detail/$1';
 $route['pes-hapus/(:any)'] = 'Order/hapus/$1';
 $route['pes-confirm/(:any)'] = 'Order/confirm/$1';
 $route['pes-selesai/(:any)'] = 'Order/selesai/$1';
+$route['pes-diterima/(:any)'] = 'Order/diterima/$1';
 
 // RETURN 
 $route['return'] = 'Pengembalian';

@@ -94,6 +94,15 @@ class Order extends CI_Controller
         }
     }
 
+    public function diterima($id)
+    {
+        $this->M_order->diterima($id);
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata('success', 'Order Already Done');
+            redirect('shop-cart');
+        }
+    }
+
     public function detail($id)
     {
         $data = [

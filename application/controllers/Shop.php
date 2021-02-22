@@ -41,9 +41,10 @@ class Shop extends CI_Controller
     {
         $id = $this->session->userdata('idUser');
         $return = $this->M_return->get()->result_array();
-        foreach ($return as $data) {
-            $kembali = $data;
-        }
+        // foreach ($return as $isi) {
+        //     $kembali = $isi['id_pesanan'];
+        // }
+        // $pesReturn = $kembali;
 
         // var_dump($kembali);
         // die;
@@ -51,7 +52,7 @@ class Shop extends CI_Controller
         $data = [
             'active' => 'cart',
             'pesanan' => $this->M_order->get_pes($id)->result_array(),
-            'return' => $kembali
+            // 'return' => $pesReturn
         ];
         $this->layout->load('frontend/index', 'frontend/menu/shop/shop-cart', $data);
     }

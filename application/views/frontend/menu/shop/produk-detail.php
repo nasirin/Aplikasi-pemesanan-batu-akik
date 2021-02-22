@@ -38,8 +38,16 @@
                             <div class="col-lg-4">
                                 <input type="number" name="qty" min="0" class="form-control" placeholder="QTY" required>
                             </div>
-                            <div class="col-lg-5">
-                                <input type="number" min="0" name="ukuran" class="form-control" placeholder="Ukuran cincin" required>
+                            <div class="col-lg-4">
+                                <input type="number" min="0" name="ukuran" class="form-control" placeholder="Size" required>
+                            </div>
+                            <div class="col-lg-4">
+                                <select name="warna" id="" required>
+                                    <option value="">--- Pilih Warna ---</option>
+                                    <option value="warna 1"> Warna 1</option>
+                                    <option value="warna 2"> Warna 2</option>
+                                    <option value="warna 3"> Warna 3</option>
+                                </select>                                
                             </div>
                         </div>
                         <div class="card_area d-flex align-items-center mt-3">
