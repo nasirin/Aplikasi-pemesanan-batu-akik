@@ -97,3 +97,5 @@
         </div>
     </div>
 </div>
+
+<script src="<?= base_url('assets/template/backend/') ?>js/pages/index.js"></script>

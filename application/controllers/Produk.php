@@ -65,16 +65,13 @@ class Produk extends CI_Controller
     public function ganti($id)
     {
         $post = $this->input->post(null, true);
-
-        // var_dump($post);
-        // die;
-
-        if (@$_FILES['gambar']['name'] != null) {
+        
+        if (@$_FILES['gambar']['name'] !=  null) {
             if ($this->upload->do_upload('gambar')) {
 
                 $img = $this->M_produk->get($id)->row(); //replace gambar
-                if ($img->img_produk != null) {
-                    $target_file = './assets/img/produk/' . $img->img_produk;
+                if ($img->imgProduk != null) {
+                    $target_file = './assets/img/produk/' . $img->imgProduk;
                     unlink($target_file);
                 }
 
@@ -93,7 +90,7 @@ class Produk extends CI_Controller
                 redirect('produk');
             }
         } else {
-            $post['gambar'] = null;
+            $post['gambar'] = $post['gambarLama'];
             $this->M_produk->ubah($post, $id);
             if ($this->db->affected_rows() > 0) {
                 $this->session->set_flashdata('success', 'Data successfully changes');
@@ -108,8 +105,8 @@ class Produk extends CI_Controller
     public function hapus($id)
     {
         $kar = $this->M_produk->get($id)->row();
-        if ($kar->img_produk != null) {
-            $target_file = './assets/img/produk/' . $kar->img_produk;
+        if ($kar->imgProduk != null) {
+            $target_file = './assets/img/produk/' . $kar->imgProduk;
             unlink($target_file);
         }
 

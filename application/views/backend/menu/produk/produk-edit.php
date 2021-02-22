@@ -8,42 +8,43 @@
 
     <div class="card">
         <div class="body">
-            <form action="<?= site_url('produk-ganti/' . $produk['id_produk']); ?>" method="POST" enctype="multipart/form-data">
+            <form action="<?= site_url('produk-ganti/' . $produk['idProduk']); ?>" method="POST" enctype="multipart/form-data">
                 <div class="row clearfix">
                     <div class="col-sm-12">
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" class="form-control" name="nama" value="<?= $produk['nama_produk']; ?>" required>
+                                <input type="text" class="form-control" name="nama" value="<?= $produk['namaProduk']; ?>" required>
                                 <label class="form-label">Name Product</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="number" min="0" class="form-control" name="harga" value="<?= $produk['harga_produk']; ?>" required>
+                                <input type="number" min="0" class="form-control" name="harga" value="<?= $produk['hargaProduk']; ?>" required>
                                 <label class="form-label">Price</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <img src="<?= base_url('assets/img/produk/' . $produk['img_produk']); ?>" width="200" alt="">
-                                <input type="file" class="form-control" name="gambar" value="<?= $produk['img_produk']; ?>">
+                                <img src="<?= base_url('assets/img/produk/' . $produk['imgProduk']); ?>" width="200" alt="">
+                                <input type="hidden" class="form-control" name="gambarLama" value="<?= $produk['imgProduk']?>">
+                                <input type="file" class="form-control" name="gambar">
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" class="form-control" name="jenis" value="<?= $produk['jenis_batu']; ?>" required>
+                                <input type="text" class="form-control" name="jenis" value="<?= $produk['jenisBatu']; ?>" required>
                                 <label class="form-label">Jenis</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="number" min="0" class="form-control" name="berat" value="<?= $produk['berat_batu']; ?>" required>
+                                <input type="number" min="0" class="form-control" name="berat" value="<?= $produk['beratBatu']; ?>" required>
                                 <label class="form-label">Berat</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <textarea rows="4" class="form-control no-resize" placeholder="Description.." name="desc" required><?= $produk['desc_produk']; ?></textarea>
+                                <textarea rows="4" class="form-control no-resize" placeholder="Description.." name="desc" required><?= $produk['descProduk']; ?></textarea>
                             </div>
                         </div>
                     </div>

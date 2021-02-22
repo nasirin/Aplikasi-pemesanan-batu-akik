@@ -5,13 +5,13 @@
                     <div class="profile-header">&nbsp;</div>
                     <div class="profile-body">
                         <div class="image-area">
-                            <img src="<?= base_url('assets/img/produk/' . $produk['img_produk']); ?>" width="200" height="200" alt="Profile Image" />
+                            <img src="<?= base_url('assets/img/produk/' . $produk['imgProduk']); ?>" width="200" height="200" alt="Profile Image" />
                         </div>
                         <div class="content-area">
-                            <h3><?= ucwords($produk['nama_produk']); ?></h3>
-                            <p><?= $produk['jenis_batu']; ?></p>
-                            <p><?= $produk['berat_batu']; ?></p>
-                            <p>Rp.<?= number_format($produk['harga_produk'], 0, ',', '.'); ?></p>
+                            <h3><?= ucwords($produk['namaProduk']); ?></h3>
+                            <p><?= $produk['jenisBatu']; ?></p>
+                            <p><?= $produk['beratBatu']; ?></p>
+                            <p>Rp.<?= number_format($produk['hargaProduk'], 0, ',', '.'); ?></p>
                         </div>
                     </div>
                     <div class="card-about-me">
@@ -23,7 +23,7 @@
                                         Description
                                     </div>
                                     <div class="content">
-                                        <?= $produk['desc_produk']; ?>
+                                        <?= $produk['descProduk']; ?>
                                     </div>
                                 </li>
                             </ul>

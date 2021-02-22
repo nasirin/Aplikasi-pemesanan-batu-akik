@@ -12,7 +12,6 @@
 
 <!-- Custom Js -->
 <script src="<?= base_url('assets/template/backend/') ?>js/admin.js"></script>
-<script src="<?= base_url('assets/template/backend/') ?>js/pages/index.js"></script>
 
 <!-- Demo Js -->
 <script src="<?= base_url('assets/template/backend/') ?>js/demo.js"></script>

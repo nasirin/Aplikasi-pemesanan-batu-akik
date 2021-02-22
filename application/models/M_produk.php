@@ -6,7 +6,7 @@ class M_produk extends CI_Model
     {
         if ($id) {
             return $this->db->from('produk')
-                ->where('id_produk', $id)
+                ->where('idProduk', $id)
                 ->get();
         } else {
             return $this->db->from('produk')
@@ -17,13 +17,12 @@ class M_produk extends CI_Model
     public function simpan($post)
     {
         $data = [
-            'nama_produk' => $post['nama'],
-            'harga_produk' => $post['harga'],
-            'img_produk' => $post['gambar'],
-            'desc_produk' => $post['desc'],
-            'jenis_batu' => $post['jenis'],
-            'berat_batu' => $post['berat'],
-            'created_produk' => date('ymd'),
+            'namaProduk' => $post['nama'],
+            'hargaProduk' => $post['harga'],
+            'imgProduk' => $post['gambar'],
+            'descProduk' => $post['desc'],
+            'jenisBatu' => $post['jenis'],
+            'beratBatu' => $post['berat'],            
         ];
 
         $this->db->insert('produk', $data);
@@ -32,18 +31,18 @@ class M_produk extends CI_Model
     public function ubah($post, $id)
     {
         $data = [
-            'nama_produk' => $post['nama'],
-            'harga_produk' => $post['harga'],
-            'desc_produk' => $post['desc'],
-            'img_produk' => $post['gambar'],
-            'updated_produk' => date('ymd'),
+            'namaProduk' => $post['nama'],
+            'hargaProduk' => $post['harga'],
+            'descProduk' => $post['desc'],
+            'imgProduk' => $post['gambar'],
+            'updatedAt' => date('ymd'),
         ];
 
-        $this->db->where('id_produk', $id)->update('produk', $data);
+        $this->db->where('idProduk', $id)->update('produk', $data);
     }
 
     public function hapus($id)
     {
-        $this->db->where('id_produk', $id)->delete('produk');
+        $this->db->where('idProduk', $id)->delete('produk');
     }
 }
