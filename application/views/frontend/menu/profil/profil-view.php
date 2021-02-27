@@ -22,10 +22,10 @@
                  <div class="blog_right_sidebar">
                      <aside class="single_sidebar_widget author_widget">
                          <img class="author_img rounded-circle" src="<?= base_url('assets/template/frontend/'); ?>img/blog/author.png" alt="">
-                         <h4><?= ucwords($pel['nama_pel']); ?></h4>
-                         <p><?= $pel['email_pel']; ?></p>
-                         <p><?= $pel['notelp_pel']; ?></p>
-                         <p><?= ucfirst($pel['alamat_pel']); ?></p>
+                         <h4><?= ucwords($pel['namaPelanggan']); ?></h4>
+                         <p><?= $pel['emailPelanggan']; ?></p>
+                         <p><?= $pel['notelpPelanggan']; ?></p>
+                         <p><?= ucfirst($pel['alamatPelanggan']); ?></p>
                          <div class="br"></div>
                      </aside>
                      <aside class="single_sidebar_widget popular_post_widget">

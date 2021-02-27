@@ -5,7 +5,7 @@ class M_pelanggan extends CI_Model
     {
         if ($id) {
             return $this->db->from('pelanggan')
-                ->where('id_pel', $id)
+                ->where('idPelanggan', $id)
                 ->get();
         } else {
             return $this->db->get('pelanggan');

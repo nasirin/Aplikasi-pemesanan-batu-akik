@@ -17,9 +17,6 @@ class Login extends CI_Controller
 
     public function profil($id)
     {
-        // var_dump($id);
-        // die;
-
         $data = [
             'active' => 'login',
             'pel' => $this->M_pelanggan->get($id)->row_array()
@@ -53,8 +50,8 @@ class Login extends CI_Controller
 
         if ($query) {
             $data = [
-                'idUser' => $query['id_pel'],
-                'nama' => $query['nama_pel']
+                'idUser' => $query['idPelanggan'],
+                'nama' => $query['namaPelanggan']
             ];
             $this->session->set_userdata($data);
             redirect();

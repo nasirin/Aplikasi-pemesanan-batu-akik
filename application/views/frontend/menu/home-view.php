@@ -95,15 +95,15 @@
                  <?php foreach ($produk as $data) : ?>
                      <div class="col-lg-3 col-md-6">
                          <div class="single-product">
-                             <img class="img-fluid" src="<?= base_url('assets/img/produk/' . $data['img_produk']) ?>" alt="">
+                             <img class="img-fluid" src="<?= base_url('assets/img/produk/' . $data['imgProduk']) ?>" alt="">
                              <div class="product-details">
-                                 <h6><?= ucwords($data['nama_produk']); ?></h6>
+                                 <h6><?= ucwords($data['namaProduk']); ?></h6>
                                  <div class="price">
-                                     <h6>Rp <?= number_format($data['harga_produk'], 0, ',', '.'); ?></h6>
+                                     <h6>Rp <?= number_format($data['hargaProduk'], 0, ',', '.'); ?></h6>
                                      <!-- <h6 class="l-through">$210.00</h6> -->
                                  </div>
                                  <div class="prd-bottom">
-                                     <a href="<?= site_url('shop-detail/' . $data['id_produk']) ?>" class="social-info">
+                                     <a href="<?= site_url('shop-detail/' . $data['idProduk']) ?>" class="social-info">
                                          <span class="lnr lnr-eye"></span>
                                          <p class="hover-text">Details</p>
                                      </a>
