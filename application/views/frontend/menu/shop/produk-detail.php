@@ -21,28 +21,29 @@
         <div class="row">
             <div class="col-lg-6 mr-2">
                 <div class="pt-5">
-                    <img class="img-fluid" src="<?= base_url('assets/img/produk/' . $produk['img_produk']) ?>" alt="">
+                    <img class="img-fluid" src="<?= base_url('assets/img/produk/' . $produk['imgProduk']) ?>" alt="">
                 </div>
             </div>
             <div class="col-lg-5">
                 <div class="s_product_text">
-                    <h3><?= ucwords($produk['nama_produk']); ?></h3>
-                    <h2>Rp <?= number_format($produk['harga_produk'], 0, ',', '.'); ?></h2>
+                    <h3><?= ucwords($produk['namaProduk']); ?></h3>
+                    <h2>Rp <?= number_format($produk['hargaProduk'], 0, ',', '.'); ?></h2>
                     <ul class="list">
                         <li><a href="#"><span>Availibility</span> : Ready</a></li>
                     </ul>
-                    <p><?= ucfirst($produk['desc_produk']); ?></p>
+                    <p><?= ucfirst($produk['descProduk']); ?></p>
 
-                    <form action="<?= site_url('pes-simpan/' . $produk['id_produk']); ?>" method="POST">
+                    <form action="<?= site_url('pes-simpan/' . $produk['idProduk']); ?>" method="POST">
                         <div class="row">
                             <div class="col-lg-4">
+                                <input type="hidden" name="harga" min="0" value="<?= $produk['hargaProduk']?>">
                                 <input type="number" name="qty" min="0" class="form-control" placeholder="QTY" required>
                             </div>
                             <div class="col-lg-4">
                                 <input type="number" min="0" name="ukuran" class="form-control" placeholder="Size" required>
                             </div>
                             <div class="col-lg-4">
-                                <select name="warna" id="" required>
+                                <select name="warna" id="" class="form-control" required>
                                     <option value="">--- Pilih Warna ---</option>
                                     <option value="warna 1"> Warna 1</option>
                                     <option value="warna 2"> Warna 2</option>
@@ -75,7 +76,7 @@
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <p><?= ucfirst($produk['desc_produk']); ?></p>
+                <p><?= ucfirst($produk['descProduk']); ?></p>
             </div>
             <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="table-responsive">
@@ -86,7 +87,7 @@
                                     <h5>Jenis Batu</h5>
                                 </td>
                                 <td>
-                                    <h5><?= $produk['jenis_batu']; ?></h5>
+                                    <h5><?= $produk['jenisBatu']; ?></h5>
                                 </td>
                             </tr>
                             <tr>
@@ -94,7 +95,7 @@
                                     <h5>Berat</h5>
                                 </td>
                                 <td>
-                                    <h5><?= $produk['berat_batu']; ?> gram</h5>
+                                    <h5><?= $produk['beratBatu']; ?> gram</h5>
                                 </td>
                             </tr>
                         </tbody>

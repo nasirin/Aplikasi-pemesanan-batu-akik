@@ -8,16 +8,26 @@ class M_return extends CI_Model
             return $this->db->from('pesananreturn')
                 ->join('produk', 'produk.idProduk = pesananreturn.idProduk', 'left')
                 ->join('pesanan', 'pesanan.idPesanan = pesananreturn.idPesanan', 'left')
-                ->join('pelanggan', 'pelanggan.id_pel = pesananreturn.idPel', 'left')
+                ->join('pelanggan', 'pelanggan.idPelanggan = pesananreturn.idPel', 'left')
                 ->where('idReturn', $id)
                 ->get();
         } else {
             return $this->db->from('pesananreturn')
                 ->join('produk', 'produk.idProduk = pesananreturn.idProduk', 'left')
                 ->join('pesanan', 'pesanan.idPesanan = pesananreturn.idPesanan', 'left')
-                ->join('pelanggan', 'pelanggan.id_pel = pesananreturn.idPel', 'left')
+                ->join('pelanggan', 'pelanggan.idPelanggan = pesananreturn.idPel', 'left')
                 ->get();
         }
+    }
+
+    public function getByIdPesanan($id)
+    {
+        return $this->db->from('pesananreturn')
+            ->join('produk', 'produk.idProduk = pesananreturn.idProduk', 'left')
+            ->join('pesanan', 'pesanan.idPesanan = pesananreturn.idPesanan', 'left')
+            ->join('pelanggan', 'pelanggan.idPelanggan = pesananreturn.idPel', 'left')
+            ->where('pesananreturn.idPesanan', $id)
+            ->get();
     }
 
     public function tambah($post, $id)
@@ -27,9 +37,9 @@ class M_return extends CI_Model
             'idPel' => $this->session->userdata('idUser'),
             'idPesanan' => $id,
             'qtyReturn' => $post['qty'],
-            'alasan' => $post['alasan'],
+            'alasanReturn' => $post['alasan'],
             'statusReturn' => 'submission', //pengajuan awal
-            
+
         ];
         $this->db->insert('pesananreturn', $data);
     }

@@ -23,7 +23,7 @@
             </div>
         <?php endif; ?>
         <div class="billing_details">
-            <form action="<?= site_url('pes-confirm/' . $pesanan['id_pesanan']); ?>" method="post" novalidate="novalidate" enctype="multipart/form-data">
+            <form action="<?= site_url('pes-confirm/' . $pesanan['idPesanan']); ?>" method="post" novalidate="novalidate" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="row contact-form">
@@ -39,15 +39,16 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="order_box">
-                            <h2>Your Order # <?= $pesanan['id_pesanan']; ?></h2>
+                            <h2>Your Order # <?= $pesanan['idPesanan']; ?></h2>
                             <ul class="list">
                                 <li><a href="#">Product <span>Total</span></a></li>
-                                <li><a href="#"><?= ucwords($pesanan['nama_produk']); ?> <span class="middle">x <?= $pesanan['qty_pesanan']; ?></span> <span class="last">Rp. <?= number_format($pesanan['qty_pesanan'] * $pesanan['harga_produk'], 0, ',', '.'); ?></span></a></li>
+                                <li><a href="#"><?= ucwords($pesanan['namaProduk']); ?> <span class="middle">x <?= $pesanan['qtyPesanan']; ?></span> <span class="last">Rp. <?= number_format($pesanan['qtyPesanan'] * $pesanan['hargaProduk'], 0, ',', '.'); ?></span></a></li>
                             </ul>
                             <ul class="list list_2">
-                                <li><a href="#">Subtotal <span>Rp. <?= number_format($pesanan['qty_pesanan'] * $pesanan['harga_produk'], 0, ',', '.'); ?></span></a></li>
-                                <li><a href="#">Shipping <span>Flat rate: $50.00</span></a></li>
-                                <li><a href="#">Total <span>Rp. <?= number_format($pesanan['qty_pesanan'] * $pesanan['harga_produk'], 0, ',', '.'); ?></span></a></li>
+                                <li><a href="#">Subtotal <span>Rp. <?= number_format($pesanan['qtyPesanan'] * $pesanan['hargaProduk'], 0, ',', '.'); ?></span></a></li>
+                                <li><a href="#">Ongkir <span><?= 'Rp ' . number_format($pesanan['ongkir'], 0, ',', '.') ?></span></a></li>
+                                <li><a href="#">Potongan 5% <span><?= 'Rp ' . number_format($pesanan['potonganOngkir'], 0, ',', '.') ?></span></a></li>
+                                <li><a href="#">Total <span>Rp. <?= number_format(($pesanan['qtyPesanan'] * $pesanan['hargaProduk']) +($pesanan['ongkir']-$pesanan['potonganOngkir']), 0, ',', '.'); ?></span></a></li>
                             </ul>
                             <div class="payment_item">
                                 <p>Pastikan bukti pembayaran sudah sesuai</p>

@@ -48,18 +48,18 @@
                 <div class="col-sm-4 invoice-col">
                     To
                     <address>
-                        <strong><?= ucwords($pesanan['nama_pel']); ?></strong><br>
-                        <?= ucfirst($pesanan['alamat_pel']); ?><br>
-                        Phone: <?= $pesanan['notelp_pel']; ?><br>
-                        Email: <?= $pesanan['email_pel']; ?>
+                        <strong><?= ucwords($pesanan['namaPelanggan']); ?></strong><br>
+                        <?= ucfirst($pesanan['alamatPelanggan']); ?><br>
+                        Phone: <?= $pesanan['notelpPelanggan']; ?><br>
+                        Email: <?= $pesanan['emailPelanggan']; ?>
                     </address>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
-                    <b>Invoice #<?= $pesanan['id_pesanan']; ?></b><br>
+                    <b>Invoice #<?= $pesanan['idPesanan']; ?></b><br>
                     <br>
-                    <b>Payment Date:</b> <?= date('d M Y', strtotime($pembayaran['created_konfirmasi'])); ?><br>
-                    <b>Account:</b> <?= $pesanan['id_pelanggan']; ?>
+                    <b>Payment Date:</b> <?= date('d M Y', strtotime($pembayaran['createdAt'])); ?><br>
+                    <b>Account:</b> <?= $pesanan['idPelanggan']; ?>
                 </div>
                 <!-- /.col -->
             </div>
@@ -75,18 +75,18 @@
                                 <th>Product</th>
                                 <th>Price</th>
                                 <th>Ring</th>
+                                <th>Warna</th>
                                 <th>Note Order</th>
-                                <th>Subtotal</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><?= $pesanan['qty_pesanan']; ?></td>
-                                <td><?= ucfirst($pesanan['nama_produk']); ?></td>
-                                <td>Rp. <?= number_format($pesanan['qty_pesanan'] * $pesanan['harga_produk'], 0, ',', '.'); ?></td>
-                                <td><?= $pesanan['ukuran_cincin']; ?></td>
-                                <td><?= ucfirst($pesanan['ket_pesanan']); ?></td>
-                                <td>Rp. <?= number_format($pesanan['qty_pesanan'] * $pesanan['harga_produk'], 0, ',', '.'); ?></td>
+                                <td><?= $pesanan['qtyPesanan']; ?></td>
+                                <td><?= ucfirst($pesanan['namaProduk']); ?></td>
+                                <td>Rp. <?= number_format($pesanan['qtyPesanan'] * $pesanan['hargaProduk'], 0, ',', '.'); ?></td>
+                                <td><?= $pesanan['ukuranCincin']; ?></td>
+                                <td><?= $pesanan['warna']; ?></td>
+                                <td><?= ucfirst($pesanan['ketPesanan']); ?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -100,15 +100,19 @@
                         <table class="table">
                             <tr>
                                 <th style="width:50%">Subtotal:</th>
-                                <td>Rp. <?= number_format($pesanan['qty_pesanan'] * $pesanan['harga_produk'], 0, ',', '.'); ?></td>
+                                <td>Rp. <?= number_format($pesanan['qtyPesanan'] * $pesanan['hargaProduk'], 0, ',', '.'); ?></td>
                             </tr>
                             <tr>
-                                <th>Shipping:</th>
-                                <td>$5.80</td>
+                                <th>Ongkir:</th>
+                                <td>Rp. <?= number_format($pesanan['ongkir'], 0, ',', '.'); ?></td>
+                            </tr>
+                            <tr>
+                                <th>Potongan:</th>
+                                <td>Rp. <?= number_format($pesanan['potonganOngkir'], 0, ',', '.'); ?></td>
                             </tr>
                             <tr>
                                 <th>Total:</th>
-                                <td>Rp. <?= number_format($pesanan['qty_pesanan'] * $pesanan['harga_produk'], 0, ',', '.'); ?></td>
+                                <td>Rp. <?= number_format(($pesanan['qtyPesanan'] * $pesanan['hargaProduk']) + ($pesanan['ongkir'] - $pesanan['potonganOngkir']), 0, ',', '.'); ?></td>
                             </tr>
                         </table>
                     </div>

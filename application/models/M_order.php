@@ -32,8 +32,8 @@ class M_order extends CI_Model
         return $this->db->from('pesanan')
             ->join('pelanggan', 'pelanggan.idPelanggan = pesanan.idPel')
             ->join('produk', 'produk.idProduk = pesanan.idProduk')
-            ->where('statusPesanan !=','batal')
-            ->where('idPel', $id)
+            ->where('pesanan.statusPesanan !=', 'cancel')
+            ->where('pelanggan.idPelanggan', $id)
             ->get();
     }
 
@@ -54,14 +54,24 @@ class M_order extends CI_Model
 
     public function simpan($post, $isi)
     {
+        $harga = $isi['qty'] * $isi['harga'];
+        if ($harga >= 1000000) {
+            $ongkir = 0;
+            $potongan = 0;
+        } else {
+            $ongkir = 50000;
+            $potongan = 50000 * 5 / 100;
+        }
         $data = [
             'idPesanan' => $this->invoice(),
             'idPel' => $this->session->userdata('idUser'),
             'idProduk' => $post['idProduk'],
             'ukuranCincin' => $isi['ukuran'],
             'qtyPesanan' => $isi['qty'],
-            'ketPesanan' => $isi['ket'],
+            'warna' => $isi['warna'],
             'statusPesanan' => 'pending',
+            'ongkir' => $ongkir,
+            'potonganOngkir' => $potongan,
         ];
 
         $this->db->insert('pesanan', $data);
@@ -104,11 +114,41 @@ class M_order extends CI_Model
     public function hapus($id)
     {
         $data = [
-            'statusPesanan' => 'batal',
+            'statusPesanan' => 'cancel',
             'updatedAt' => date('dmy')
         ];
 
         $this->db->where('idPesanan', $id)
             ->update('pesanan', $data);
+    }
+
+    public function returnApprove($id)
+    {
+        $data = [
+            'statusPesanan' => 'return',
+            'updatedAt' => date('dmy'),
+        ];
+
+        $this->db->where('idPesanan', $id)
+            ->update('pesanan', $data);
+    }
+
+    public function printToDay()
+    {
+        return $this->db->from('pesanan')
+            ->join('pelanggan', 'pelanggan.idPelanggan = pesanan.idPel')
+            ->join('produk', 'produk.idProduk = pesanan.idProduk')
+            ->where('pesanan.createdAt', date('ymd'))
+            ->get();
+    }
+
+    public function byTgl($post)
+    {
+        return $this->db->from('pesanan')
+            ->join('pelanggan', 'pelanggan.idPelanggan = pesanan.idPel')
+            ->join('produk', 'produk.idProduk = pesanan.idProduk')
+            ->where('pesanan.createdAt >=', $post['mulai'])
+            ->where('pesanan.createdAt <=', $post['sampai'])
+            ->get();
     }
 }

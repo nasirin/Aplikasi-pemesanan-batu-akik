@@ -9,6 +9,7 @@ class Admin extends CI_Controller
 		check_not_login();
 		$this->load->model('M_order');
 		$this->load->model('M_pelanggan');
+		$this->load->model('M_return');
 	}
 
 	public function index()
@@ -21,6 +22,7 @@ class Admin extends CI_Controller
 			'success' => $this->M_order->info($info = 'success')->num_rows(),
 			'order' => $this->M_order->info($info = 'pending')->result_array(),
 			'customers' => $this->M_pelanggan->info()->num_rows(),
+			'return' => $this->M_return->get()->num_rows()
 		];
 		$this->layout->load('backend/index', 'backend/menu/home-view', $data);
 	}

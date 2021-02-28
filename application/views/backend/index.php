@@ -1,7 +1,7 @@
 <?php $this->load->View('backend/components/meta') ?>
 
 <body class="theme-red">
-    <div class="page-loader-wrapper">
+    <!-- <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
                 <div class="spinner-layer pl-red">
@@ -16,7 +16,7 @@
             <p>Please wait...</p>
         </div>
     </div>
-    <div class="overlay"></div>
+    <div class="overlay"></div> -->
 
     <?php $this->load->View('backend/components/topbar') ?>
     <!-- #Top Bar -->

@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-12">
             <!-- Start Filter Bar -->
-            <div class="filter-bar d-flex flex-wrap align-items-center">
+            <!-- <div class="filter-bar d-flex flex-wrap align-items-center">
                 <div class="pagination">
                     <a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
                     <a href="#" class="active">1</a>
@@ -28,7 +28,7 @@
                     <a href="#">6</a>
                     <a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                 </div>
-            </div>
+            </div> -->
             <!-- End Filter Bar -->
             <!-- Start Best Seller -->
             <section class="lattest-product-area pb-40 category-list">
@@ -58,7 +58,7 @@
             </section>
             <!-- End Best Seller -->
             <!-- Start Filter Bar -->
-            <div class="filter-bar d-flex flex-wrap align-items-center mb-5">
+            <!-- <div class="filter-bar d-flex flex-wrap align-items-center mb-5">
                 <div class="pagination">
                     <a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
                     <a href="#" class="active">1</a>
@@ -68,7 +68,7 @@
                     <a href="#">6</a>
                     <a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                 </div>
-            </div>
+            </div> -->
             <!-- End Filter Bar -->
         </div>
     </div>

@@ -12,7 +12,7 @@
              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                  <div class="card">
                      <div class="header">
-                         <a href="<?= site_url('cetak/pelanggan'); ?>" class="btn btn-primary"> Print</a>
+                         <a href="<?= site_url('cetak/pelanggan'); ?>" target="_blank" class="btn btn-primary"> Print</a>
                      </div>
                      <div class="body">
                          <div class="table-responsive">
@@ -41,12 +41,12 @@
                                      <?php foreach ($pelanggan as $data) : ?>
                                          <tr>
                                              <td><?= $no++; ?></td>
-                                             <td><?= $data['nama_pel']; ?></td>
-                                             <td><?= $data['email_pel']; ?></td>
-                                             <td><?= $data['notelp_pel']; ?></td>
-                                             <td><?= $data['alamat_pel']; ?></td>
+                                             <td><?= $data['namaPelanggan']; ?></td>
+                                             <td><?= $data['emailPelanggan']; ?></td>
+                                             <td><?= $data['notelpPelanggan']; ?></td>
+                                             <td><?= $data['alamatPelanggan']; ?></td>
                                              <td>
-                                                 <a href="<?= site_url('pelanggan/detail/'.$data['id_pel']); ?>" class="btn btn-info btn-sm">Detail</a>
+                                                 <a href="<?= site_url('pelanggan/detail/'.$data['idPelanggan']); ?>" class="btn btn-info btn-sm" >Detail</a>
                                              </td>
                                          </tr>
                                      <?php endforeach; ?>

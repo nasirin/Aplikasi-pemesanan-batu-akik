@@ -29,12 +29,14 @@
                      <div class="body">
                          <div class="table-responsive">
                              <!-- <table class="table table-bordered table-striped table-hover js-basic-example dataTable" id="table"> -->
-                             <table class="table table-bordered table-striped table-hover" id="table">
+                             <table class="table table-bordered table-striped table-hover table-sm dataTable js-exportable" id="table">
                                  <thead>
                                      <tr>
                                          <th>#</th>
                                          <th>Image</th>
                                          <th>Product</th>
+                                         <th>Jenis</th>
+                                         <th>Berat</th>
                                          <th>Price</th>
                                          <th>More</th>
                                      </tr>
@@ -44,6 +46,8 @@
                                          <th>#</th>
                                          <th>Image</th>
                                          <th>Product</th>
+                                         <th>Jenis</th>
+                                         <th>Berat</th>
                                          <th>Price</th>
                                          <th>More</th>
                                      </tr>
@@ -54,11 +58,13 @@
                                              <td><?= $no++; ?></td>
                                              <td> <img src="<?= base_url('assets/img/produk/' . $data['imgProduk']); ?>" alt="" width="100" height="80"></td>
                                              <td><?= $data['namaProduk']; ?></td>
-                                             <td><?= $data['hargaProduk']; ?></td>
+                                             <td><?= $data['jenisBatu']; ?></td>
+                                             <td><?= $data['beratBatu']; ?></td>
+                                             <td><?= 'Rp ' . number_format($data['hargaProduk'], 0, ',', '.'); ?></td>
                                              <td>
                                                  <a href="<?= site_url('produk-detail/' . $data['idProduk']); ?>" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                                                  <a href="<?= site_url('produk-ubah/' . $data['idProduk']); ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-                                                 <?php if ($this->session->userdata('level') == 'super admin') : ?>
+                                                 <?php if ($this->session->userdata('level') == 'Super Admin') : ?>
                                                      <a href="<?= site_url('produk-hapus/' . $data['idProduk']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin?')"><i class="fa fa-trash"></i></a>
                                                  <?php endif; ?>
                                              </td>
@@ -78,6 +84,10 @@
  <script src="<?= base_url('assets/template/backend/') ?>plugins/jquery-datatable/jquery.dataTables.js"></script>
  <script src="<?= base_url('assets/template/backend/') ?>plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
 
-
- <script src="<?= base_url('assets/template/backend/') ?>js/admin.js"></script>
  <script src="<?= base_url('assets/template/backend/') ?>js/pages/tables/jquery-datatable.js"></script>
+
+ <script>
+     $(document).ready(function() {
+         $('#table').DataTable();
+     })
+ </script>

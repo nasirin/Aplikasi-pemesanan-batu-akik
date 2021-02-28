@@ -23,7 +23,7 @@
                 </div>
                 <div class="content">
                     <div class="text">RETURN</div>
-                    <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
+                    <div class="number count-to" data-from="0" data-to="<?=$return?>" data-speed="1000" data-fresh-interval="20"></div>
                 </div>
             </div>
         </div>
@@ -79,14 +79,14 @@
                                         <td><?= $no++; ?></td>
 
                                         <td>
-                                            <a href="">
-                                                <?= $data['id_pesanan']; ?>
+                                            <a href="<?= site_url('pes-detail/' . $data['idPesanan']); ?>" target="_blank">
+                                                <?= $data['idPesanan']; ?>
                                             </a>
                                         </td>
-                                        <td><?= ucwords($data['nama_pel']); ?></td>
-                                        <td><?= ucfirst($data['status_pesanan']); ?></td>
-                                        <td><?= $data['nama_produk']; ?></td>
-                                        <td>Rp. <?= number_format($data['harga_produk'] * $data['qty_pesanan'], 0, ',', '.'); ?></td>
+                                        <td><?= ucwords($data['namaPelanggan']); ?></td>
+                                        <td><?= ucfirst($data['statusPesanan']); ?></td>
+                                        <td><?= $data['namaProduk']; ?></td>
+                                        <td>Rp. <?= number_format($data['hargaProduk'] * $data['qtyPesanan'], 0, ',', '.'); ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

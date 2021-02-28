@@ -34,11 +34,11 @@
                             </li>
                         <?php endif; ?>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
+                    <!-- <ul class="nav navbar-nav navbar-right">
                         <li class="nav-item">
                             <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
                         </li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </nav>

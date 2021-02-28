@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1 class="text-center">Laporan Penjualan</h1>
+    <h1 class="text-center">Laporan Penjualan Hari Ini</h1>
     <p class="text-center"><?= date('d M Y') ?></p>
 
     <table class="table table-bordered">
@@ -20,6 +20,7 @@
                 <th>Pelanggan</th>
                 <th>Produk</th>
                 <th>QTY</th>
+                <th>Warna</th>
                 <th>Status</th>
                 <th>Harga</th>
             </tr>
@@ -32,12 +33,13 @@
                     <td><?= ucwords($value['namaPelanggan']) ?></td>
                     <td><?= ucfirst($value['namaProduk']) ?></td>
                     <td><?= $value['qtyPesanan'] ?></td>
+                    <td><?= $value['warna'] ?></td>
                     <td><?= ucfirst($value['statusPesanan']) ?></td>
                     <td>Rp. <?= number_format($value['hargaProduk'], 0, ',', '.') ?></td>
                 </tr>
             <?php endforeach ?>
             <tr>
-                <th colspan="6" class="text-center">Total</th>
+                <th colspan="7" class="text-center">Total</th>
                 <td>Rp. <?= number_format($total, 0, ',', '.'); ?></td>
             </tr>
         </tbody>

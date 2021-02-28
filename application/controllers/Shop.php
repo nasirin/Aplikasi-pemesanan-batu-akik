@@ -40,19 +40,11 @@ class Shop extends CI_Controller
     public function cart()
     {
         $id = $this->session->userdata('idUser');
-        $return = $this->M_return->get()->result_array();
-        // foreach ($return as $isi) {
-        //     $kembali = $isi['id_pesanan'];
-        // }
-        // $pesReturn = $kembali;
-
-        // var_dump($kembali);
-        // die;
 
         $data = [
             'active' => 'cart',
-            'pesanan' => $this->M_order->get_pes($id)->result_array(),
-            // 'return' => $pesReturn
+            'pesanan' => $this->M_order->get_pes($id)->result_array(),            
+            'return' => $id
         ];
         $this->layout->load('frontend/index', 'frontend/menu/shop/shop-cart', $data);
     }

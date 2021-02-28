@@ -28,7 +28,7 @@ class Cetak extends CI_Controller
         // mencari total
         $harga = $this->M_order->get()->result_array();
         foreach ($harga as $subtotal) {
-            $total_harga[] = $subtotal['harga_produk'];
+            $total_harga[] = $subtotal['hargaProduk'];
         }
         $total = array_sum($total_harga);
         // end mencari total
@@ -39,6 +39,50 @@ class Cetak extends CI_Controller
             'total' => $total
         ];
         $this->load->view('backend/menu/cetak/cetak_penjualan', $data);
+    }
+
+    public function hariIni()
+    {
+
+        $harga = $this->M_order->printToDay()->result_array();
+        // var_dump($harga);
+        // die;
+
+        foreach ($harga as $subtotal) {
+            $total_harga[] = $subtotal['hargaProduk'];
+        }
+        $total = array_sum($total_harga);
+        // end mencari total
+
+        $data = [
+            'no' => 1,
+            'order' => $this->M_order->printToDay()->result_array(),
+            'total' => $total
+        ];
+        $this->load->view('backend/menu/cetak/cetak_penjualan_harini', $data);
+    }
+
+    public function byTgl()
+    {
+        $post = $this->input->post(null, true);
+        $harga = $this->M_order->byTgl($post)->result_array();
+        // var_dump($harga);
+        // die;
+
+        foreach ($harga as $subtotal) {
+            $total_harga[] = $subtotal['hargaProduk'];
+        }
+        $total = array_sum($total_harga);
+        // end mencari total
+
+        $data = [
+            'no' => 1,
+            'order' => $harga,
+            'total' => $total,
+            'mulai' => $post['mulai'],
+            'sampai' => $post['sampai'],
+        ];
+        $this->load->view('backend/menu/cetak/cetak_penjualan_pertgl', $data);
     }
 
     function cetak_pelanggan()

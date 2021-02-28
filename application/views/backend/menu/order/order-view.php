@@ -16,7 +16,8 @@
              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                  <div class="card">
                      <div class="header">
-                         <a href="<?= site_url('cetak/penjualan'); ?>" target="_blank" class="btn btn-primary"> Print</a>
+                         <!-- <a href="<?= site_url('cetak/penjualan'); ?>" target="_blank" class="btn btn-primary"> Print</a> -->
+                         <a href="#modalPrint" data-toggle="modal" class="btn btn-primary"> Print</a>
                      </div>
                      <div class="body">
                          <div class="table-responsive">
@@ -45,14 +46,14 @@
                                      <?php foreach ($pesanan as $data) : ?>
                                          <tr>
                                              <td><?= $no++; ?></td>
-                                             <td><?= ucfirst($data['nama_pel']); ?></td>
-                                             <td><?= ucfirst($data['nama_produk']); ?></td>
-                                             <td><?= ucfirst($data['status_pesanan']); ?></td>
-                                             <td><?= date('d M Y', strtotime($data['created_pesanan'])); ?></td>
+                                             <td><?= ucfirst($data['namaPelanggan']); ?></td>
+                                             <td><?= ucfirst($data['namaProduk']); ?></td>
+                                             <td><?= ucfirst($data['statusPesanan']); ?></td>
+                                             <td><?= date('d M Y', strtotime($data['createdAt'])); ?></td>
                                              <td>
-                                                 <a href="<?= site_url('pes-detail/' . $data['id_pesanan']); ?>" target="_blank" class="btn btn-info btn-sm">Detail</a>
-                                                 <?php if ($data['status_pesanan'] == 'process') : ?>
-                                                     <a href="<?= site_url('pes-selesai/' . $data['id_pesanan']); ?>" onclick="return confirm('Apakah Pesanan Benar Selesai?')" class="btn btn-success btn-sm">Done</a>
+                                                 <a href="<?= site_url('pes-detail/' . $data['idPesanan']); ?>" target="_blank" class="btn btn-info btn-sm">Detail</a>
+                                                 <?php if ($data['statusPesanan'] == 'process') : ?>
+                                                     <a href="<?= site_url('pes-selesai/' . $data['idPesanan']); ?>" onclick="return confirm('Apakah Pesanan Benar Selesai?')" class="btn btn-success btn-sm">Done</a>
                                                  <?php endif; ?>
                                              </td>
                                          </tr>
@@ -63,6 +64,33 @@
                      </div>
                  </div>
              </div>
+         </div>
+     </div>
+ </div>
+
+ <div class="modal fade" id="modalPrint" tabindex="-1" role="dialog">
+     <div class="modal-dialog" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h4 class="modal-title" id="defaultModalLabel">Print Laporan Penjualan</h4>
+             </div>
+             <form action="<?= site_url('cetak/byTgl')?>" method="POST" target="_blank">
+                 <div class="modal-body">
+                     <div class="form-group">
+                         <label for="">Mulai</label>
+                         <input type="date" class="form-control" name="mulai" required>
+                     </div>
+                     <div class="form-group">
+                         <label for="">Sampai</label>
+                         <input type="date" class="form-control" name="sampai" required>
+                     </div>
+                 </div>
+                 <div class="modal-footer">
+                     <button type="submit" class="btn btn-link waves-effect">Print</button>
+                     <a href="<?= site_url('cetak/today'); ?>" target="_blank" class="btn btn-link waves-effect">Print Hari ini</a>
+                     <a href="<?= site_url('cetak/penjualan'); ?>" target="_blank" class="btn btn-link waves-effect">Print All</a>
+                 </div>
+             </form>
          </div>
      </div>
  </div>

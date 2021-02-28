@@ -3,7 +3,7 @@
      <div class="container">
          <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
              <div class="col-first">
-                 <h1>Shopping Cart</h1>
+                 <h1>Shopping Cart <?= $return ?></h1>
                  <nav class="d-flex align-items-center">
                      <a href="<?= base_url(); ?>">Home<span class="lnr lnr-arrow-right"></span></a>
                      <a href="#">Cart</a>
@@ -17,6 +17,11 @@
  <!--================Cart Area =================-->
  <section class="cart_area">
      <div class="container">
+         <?php if ($this->session->flashdata('error')) : ?>
+             <div class="alert alert-danger" role="alert">
+                 <?= $this->session->userdata('error'); ?>
+             </div>
+         <?php endif; ?>
          <div class="cart_inner">
              <div class="table-responsive">
                  <table class="table">
@@ -26,6 +31,7 @@
                              <th scope="col">Price</th>
                              <th scope="col">Quantity</th>
                              <th scope="col">Ring</th>
+                             <th scope="col">Warna</th>
                              <th scope="col">Total</th>
                              <th scope="col">Status</th>
                              <th scope="col">More</th>
@@ -37,39 +43,47 @@
                                  <td>
                                      <div class="media">
                                          <div class="d-flex">
-                                             <img src="<?= base_url('assets/img/produk/' . $data['img_produk']) ?>" alt="" width="200">
+                                             <img src="<?= base_url('assets/img/produk/' . $data['imgProduk']) ?>" alt="" width="200">
                                          </div>
                                          <div class="media-body">
-                                             <p><?= ucwords($data['nama_produk']); ?></p>
+                                             <p><?= ucwords($data['namaProduk']); ?></p>
                                          </div>
                                      </div>
                                  </td>
                                  <td>
-                                     <h5>Rp. <?= number_format($data['harga_produk'], 0, ',', '.'); ?></h5>
+                                     <h5>Rp. <?= number_format($data['hargaProduk'], 0, ',', '.'); ?></h5>
                                  </td>
                                  <td>
-                                     <h5><?= $data['qty_pesanan']; ?></h5>
+                                     <h5><?= $data['qtyPesanan']; ?></h5>
                                  </td>
                                  <td>
-                                     <h5><?= $data['ukuran_cincin']; ?></h5>
+                                     <h5><?= $data['ukuranCincin']; ?></h5>
                                  </td>
                                  <td>
-                                     <h5>Rp. <?= number_format($data['harga_produk'] * $data['qty_pesanan'], 0, ',', '.'); ?></h5>
+                                     <h5><?= $data['warna']; ?></h5>
                                  </td>
                                  <td>
-                                     <h5><?= ucwords($data['status_pesanan']); ?></h5>
-                                 </td>
-                                 <td>
-                                     <?php if ($data['status_pesanan'] == 'pending') : ?>
-                                         <a href="<?= site_url('shop-checkout/' . $data['id_pesanan']); ?>" class="btn btn-info">Pay</a>
-                                         <a href="<?= site_url('pes-hapus/' . $data['id_pesanan']); ?>" class="btn btn-danger">Cancel</a>
+                                     <?php if ($data['potonganOngkir'] == 0) : ?>
+                                         <h5>Rp. <?= number_format(($data['hargaProduk'] * $data['qtyPesanan']) + $data['ongkir'], 0, ',', '.'); ?></h5>
                                      <?php else : ?>
-                                         <a href="<?= site_url('print/' . $data['id_pesanan']); ?>" target="_blank" class="btn btn-info">Invoice</a>
-                                         <?php if ($data['status_pesanan'] == 'process') : ?>
-                                             <a href="<?= site_url('pes-diterima/' . $data['id_pesanan']); ?>" onclick="return confirm('Pastikan Barang anda sudah sesuai')" class="btn btn-success">Di terima</a>
+                                         <h5>Rp. <?= number_format(($data['hargaProduk'] * $data['qtyPesanan']) + ($data['ongkir'] - $data['potonganOngkir']), 0, ',', '.'); ?></h5>
+                                     <?php endif; ?>
+
+                                 </td>
+                                 <td>
+                                     <h5><?= ucwords($data['statusPesanan']); ?></h5>
+                                 </td>
+                                 <td>
+                                     <?php if ($data['statusPesanan'] == 'pending') : ?>
+                                         <a href="<?= site_url('shop-checkout/' . $data['idPesanan']); ?>" class="btn btn-info">Pay</a>
+                                         <a href="<?= site_url('pes-hapus/' . $data['idPesanan']); ?>" class="btn btn-danger">Cancel</a>
+                                     <?php else : ?>
+                                         <a href="<?= site_url('print/' . $data['idPesanan']); ?>" target="_blank" class="btn btn-info">Invoice</a>
+                                         <?php if ($data['statusPesanan'] == 'process') : ?>
+                                             <a href="<?= site_url('pes-diterima/' . $data['idPesanan']); ?>" onclick="return confirm('Pastikan Barang anda sudah sesuai')" class="btn btn-success">Di terima</a>
                                          <?php endif; ?>
-                                         <?php if ($data['status_pesanan'] == 'diterima') : ?>
-                                             <a href="<?= site_url('pengajuan/' . $data['id_pesanan']); ?>" class="btn btn-danger">Return</a>
+                                         <?php if ($data['statusPesanan'] == 'diterima') : ?>
+                                             <a href="<?= site_url('pengajuan/' . $data['idPesanan']); ?>" class="btn btn-danger">Return</a>
                                          <?php endif; ?>
                                      <?php endif; ?>
 

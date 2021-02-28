@@ -29,13 +29,13 @@
             <?php foreach ($pelanggan as $value) : ?>
                 <tr>
                     <td><?= $no++; ?></td>
-                    <td><?= $value['id_pel'] ?></td>
-                    <td><?= ucwords($value['nama_pel']) ?></td>
-                    <td><?= $value['email_pel'] ?></td>
-                    <td><?= $value['pass_pel'] ?></td>
-                    <td><?= $value['notelp_pel'] ?></td>
-                    <td><?= ucfirst($value['alamat_pel']) ?></td>
-                    <td><?= date('d M Y', strtotime($value['created_pel'])) ?></td>
+                    <td><?= $value['idPelanggan'] ?></td>
+                    <td><?= ucwords($value['namaPelanggan']) ?></td>
+                    <td><?= $value['emailPelanggan'] ?></td>
+                    <td><?= $value['passPelanggan'] ?></td>
+                    <td><?= $value['notelpPelanggan'] ?></td>
+                    <td><?= ucfirst($value['alamatPelanggan']) ?></td>
+                    <td><?= date('d M Y', strtotime($value['createdAt'])) ?></td>
                 </tr>
             <?php endforeach ?>
         </tbody>

@@ -29,23 +29,23 @@
                         <div class="col-sm-4 invoice-col">
                             To
                             <address>
-                                <strong><?= ucfirst($detail['nama_pel']); ?></strong><br>
+                                <strong><?= ucfirst($detail['namaPelanggan']); ?></strong><br>
 
-                                <?= ucfirst($detail['alamat_pel']); ?><br>
-                                Phone: <?= $detail['notelp_pel']; ?><br>
-                                Email: <?= $detail['email_pel']; ?>
+                                <?= ucfirst($detail['alamatPelanggan']); ?><br>
+                                Phone: <?= $detail['notelpPelanggan']; ?><br>
+                                Email: <?= $detail['emailPelanggan']; ?>
                             </address>
                         </div>
                         <!-- /.col -->
                         <div class="col-sm-4 invoice-col">
-                            <b>Invoice #<?= $detail['id_pesanan']; ?></b><br>
+                            <b>Invoice #<?= $detail['idPesanan']; ?></b><br>
                             <br>
                             <?php if ($pembayaran) : ?>
-                                <b>Payment date:</b> <?= $pembayaran['created_konfirmasi']; ?><br>
+                                <b>Payment date:</b> <?= $pembayaran['createdAt']; ?><br>
                             <?php else : ?>
                                 <b>Payment Status:</b> Waiting<br>
                             <?php endif; ?>
-                            <b>Account:</b> <?= $detail['id_pel']; ?>
+                            <b>Account:</b> <?= $detail['idPelanggan']; ?>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -61,18 +61,18 @@
                                         <th>Product</th>
                                         <th>Price</th>
                                         <th>Ring</th>
+                                        <th>Warna</th>
                                         <th>Note Order</th>
-                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><?= $detail['qty_pesanan']; ?></td>
-                                        <td><?= ucfirst($detail['nama_produk']); ?></td>
-                                        <td>Rp. <?= number_format($detail['harga_produk'], 0, ',', '.'); ?></td>
-                                        <td> <?= $detail['ukuran_cincin']; ?></td>
-                                        <td><?= ucfirst($detail['ket_pesanan']); ?></td>
-                                        <td>Rp. <?= number_format($detail['qty_pesanan'] * $detail['harga_produk'], 0, ',', '.'); ?></td>
+                                        <td><?= $detail['qtyPesanan']; ?></td>
+                                        <td><?= ucfirst($detail['namaProduk']); ?></td>
+                                        <td>Rp. <?= number_format($detail['hargaProduk'], 0, ',', '.'); ?></td>
+                                        <td> <?= $detail['ukuranCincin']; ?></td>
+                                        <td> <?= $detail['warna']; ?></td>
+                                        <td><?= ucfirst($detail['ketPesanan']); ?></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -86,9 +86,9 @@
                         <div class="col-6">
                             <p class="lead">Payment:</p>
                             <?php if ($pembayaran) : ?>
-                                <img src="<?= base_url('assets/img/bukti/' . $pembayaran['gambar_pesanan']); ?>" width="300" alt="Bukti pembayaran">
+                                <img src="<?= base_url('assets/img/bukti/' . $pembayaran['gambar']); ?>" width="300" alt="Bukti pembayaran">
                             <?php else : ?>
-                                <img src="<?= base_url('assets/img/Payment-Gateway_Default.png'); ?>" width="300" alt="Bukti pembayaran">
+                                <img src="<?= base_url('assets/img/notpaid.png'); ?>" width="300" alt="Bukti pembayaran">
                             <?php endif; ?>
                         </div>
                         <!-- /.col -->
@@ -98,8 +98,20 @@
                             <div class="table-responsive">
                                 <table class="table">
                                     <tr>
+                                        <th style="width:50%">Sub Total:</th>
+                                        <td>Rp. <?= number_format($detail['hargaProduk'], 0, ',', '.'); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Ongkir:</th>
+                                        <td>Rp. <?= number_format($detail['ongkir'], 0, ',', '.'); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Potongan:</th>
+                                        <td>Rp. <?= number_format($detail['potonganOngkir'], 0, ',', '.'); ?></td>
+                                    </tr>
+                                    <tr>
                                         <th style="width:50%">Total:</th>
-                                        <td>Rp. <?= number_format($detail['qty_pesanan'] * $detail['harga_produk'], 0, ',', '.'); ?></td>
+                                        <td>Rp. <?= number_format(($detail['qtyPesanan'] * $detail['hargaProduk']) + ($detail['ongkir'] - $detail['potonganOngkir']), 0, ',', '.'); ?></td>
                                     </tr>
                                 </table>
                             </div>

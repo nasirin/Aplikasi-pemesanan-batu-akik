@@ -39,9 +39,8 @@ class Order extends CI_Controller
     public function simpan($id)
     {
         $post = $this->M_produk->get($id)->row_array();
-        $isi = $this->input->post(null, true);
-        // var_dump($post);
-        // die;
+        $isi = $this->input->post(null, true);        
+
         $this->M_order->simpan($post, $isi);
 
         if ($this->db->affected_rows() > 0) {
@@ -61,8 +60,6 @@ class Order extends CI_Controller
     public function confirm($id)
     {
         $post = $this->input->post(null, true);
-        // var_dump($post);
-        // die;
 
         if (@$_FILES['bukti']['name'] != null) {
             if ($this->upload->do_upload('bukti')) {
