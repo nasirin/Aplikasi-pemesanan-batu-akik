@@ -50,7 +50,7 @@
                     <span>Pelanggan</span>
                 </a>
             </li>
-            <?php if ($this->session->userdata('level') == 'super admin') : ?>
+            <?php if ($this->session->userdata('level') == 'Super Admin') : ?>
                 <li class="<?= $active == 'user' ? 'active' : ''; ?>">
                     <a href="<?= site_url('user'); ?>">
                         <i class="material-icons">people</i>

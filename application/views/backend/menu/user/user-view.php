@@ -52,15 +52,15 @@
                                          <tr>
                                              <td><?= $no++; ?></td>
                                              <td><?= $data['level']; ?></td>
-                                             <td><?= $data['nama_user']; ?></td>
-                                             <td><?= $data['email_user']; ?></td>
-                                             <td><?= $data['pass_user']; ?></td>
-                                             <td><?= $data['notelp_user']; ?></td>
-                                             <td><?= $data['status_user'] != null ? "Active" : 'Non Active'; ?></td>
+                                             <td><?= $data['namaUser']; ?></td>
+                                             <td><?= $data['emailUser']; ?></td>
+                                             <td><?= $data['passUser']; ?></td>
+                                             <td><?= $data['notelpUser']; ?></td>
+                                             <td><?= $data['statusUser'] != null ? "Active" : 'Non Active'; ?></td>
                                              <td>
-                                                 <a href="<?= site_url('user-detail/' . $data['id_user']); ?>" class="btn btn-info btn-xs"><i class="fa fa-eye"></i></a>
-                                                 <a href="<?= site_url('user-edit/' . $data['id_user']); ?>" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                                                 <a href="<?= site_url('user-hapus/' . $data['id_user']); ?>" class="btn btn-danger btn-xs" onclick="return confirm('Apakah Anda Yakin?')"><i class="fa fa-trash"></i></a>
+                                                 <a href="<?= site_url('user-detail/' . $data['idUser']); ?>" class="btn btn-info btn-xs"><i class="fa fa-eye"></i></a>
+                                                 <a href="<?= site_url('user-edit/' . $data['idUser']); ?>" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+                                                 <a href="<?= site_url('user-hapus/' . $data['idUser']); ?>" class="btn btn-danger btn-xs" onclick="return confirm('Apakah Anda Yakin?')"><i class="fa fa-trash"></i></a>
                                              </td>
                                          </tr>
                                      <?php endforeach; ?>

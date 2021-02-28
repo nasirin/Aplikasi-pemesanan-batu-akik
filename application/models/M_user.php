@@ -6,7 +6,7 @@ class M_user extends CI_Model
     {
         if ($id) {
             return $this->db->from('user')
-                ->where('id_user', $id)
+                ->where('idUser', $id)
                 ->get();
         } else {
             return $this->db->get('user');
@@ -17,13 +17,13 @@ class M_user extends CI_Model
     {
         $data = [
             'level' => $post['level'],
-            'nama_user' => $post['nama'],
-            'email_user' => $post['email'],
-            'pass_user' => $post['pass'],
-            'notelp_user' => $post['notelp'],
-            'alamat_user' => $post['alamat'],
-            'status_user' => $post['status'],
-            'created_user' => date('ymd'),
+            'namaUser' => $post['nama'],
+            'emailUser' => $post['email'],
+            'passUser' => $post['pass'],
+            'notelpUser' => $post['notelp'],
+            'alamatUser' => $post['alamat'],
+            'statusUser' => $post['status'],
+            'createdUser' => date('ymd'),
         ];
         $this->db->insert('user', $data);
     }
@@ -32,15 +32,15 @@ class M_user extends CI_Model
     {
         $data = [
             'level' => $post['level'],
-            'nama_user' => $post['nama'],
-            'email_user' => $post['email'],
-            'pass_user' => $post['pass'],
-            'notelp_user' => $post['notelp'],
-            'alamat_user' => $post['alamat'],
-            'status_user' => $post['status'],
-            'updated_user' => date('ymd'),
+            'namaUser' => $post['nama'],
+            'emailUser' => $post['email'],
+            'passUser' => $post['pass'],
+            'notelpUser' => $post['notelp'],
+            'alamatUser' => $post['alamat'],
+            'statusUser' => $post['status'],
+            'updatedUser' => date('ymd'),
         ];
-        $this->db->where('id_user', $id)
+        $this->db->where('idUser', $id)
             ->update('user', $data);
     }
 }

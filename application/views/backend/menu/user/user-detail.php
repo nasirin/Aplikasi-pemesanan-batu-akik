@@ -8,9 +8,9 @@
                             <img src="<?= base_url('assets/img/default-user.jpg'); ?>" width="100" height="100" alt="Profile Image" />
                         </div>
                         <div class="content-area">
-                            <h3><?= ucwords($user['nama_user']); ?></h3>
+                            <h3><?= ucwords($user['namaUser']); ?></h3>
                             <p><?= ucwords($user['level']); ?></p>
-                            <p><?= ucwords($user['status_user'] == 'on' ? 'Active' : 'Non Active')  ?></p>
+                            <p><?= ucwords($user['statusUser'] == 'on' ? 'Active' : 'Non Active')  ?></p>
                         </div>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                                     Email
                                 </div>
                                 <div class="content">
-                                    <?= $user['email_user']; ?>
+                                    <?= $user['emailUser']; ?>
                                 </div>
                             </li>
                             <li>
@@ -36,7 +36,7 @@
                                     Password
                                 </div>
                                 <div class="content">
-                                    <?= $user['pass_user']; ?>
+                                    <?= $user['passUser']; ?>
                                 </div>
                             </li>
                             <li>
@@ -45,7 +45,7 @@
                                     Telepon
                                 </div>
                                 <div class="content">
-                                    <?= $user['notelp_user']; ?>
+                                    <?= $user['notelpUser']; ?>
                                 </div>
                             </li>
                             <li>
@@ -54,7 +54,7 @@
                                     Address...
                                 </div>
                                 <div class="content">
-                                    <?= $user['alamat_user']; ?>
+                                    <?= $user['alamatUser']; ?>
                                 </div>
                             </li>
                         </ul>

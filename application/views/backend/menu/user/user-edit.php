@@ -8,7 +8,7 @@
 
     <div class="card">
         <div class="body">
-            <form action="<?= site_url('user-ubah/' . $user['id_user']); ?>" method="POST">
+            <form action="<?= site_url('user-ubah/' . $user['idUser']); ?>" method="POST">
                 <div class="row clearfix">
                     <div class="col-sm-12">
                         <div class="form-group form-float">
@@ -22,36 +22,36 @@
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" class="form-control" name="nama" value="<?= $user['nama_user']; ?>" required>
+                                <input type="text" class="form-control" name="nama" value="<?= $user['namaUser']; ?>" required>
                                 <label class="form-label">Nama User</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="email" class="form-control" name="email" value="<?= $user['email_user']; ?>" required>
+                                <input type="email" class="form-control" name="email" value="<?= $user['emailUser']; ?>" required>
                                 <label class="form-label">Email Address...</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" class="form-control" name="pass" value="<?= $user['pass_user']; ?>" required>
+                                <input type="text" class="form-control" name="pass" value="<?= $user['passUser']; ?>" required>
                                 <label class="form-label">Password</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="number" min="0" class="form-control" name="notelp" value="<?= $user['notelp_user']; ?>" required>
+                                <input type="number" min="0" class="form-control" name="notelp" value="<?= $user['notelpUser']; ?>" required>
                                 <label class="form-label">Phone number</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <textarea rows="4" class="form-control no-resize" placeholder="Address..." name="alamat" required><?= $user['alamat_user']; ?></textarea>
+                                <textarea rows="4" class="form-control no-resize" placeholder="Address..." name="alamat" required><?= $user['alamatUser']; ?></textarea>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="switch">
-                                <label>Non Active<input type="checkbox" name="status" <?= $user['status_user'] == null ? '' : 'checked'; ?>><span class="lever"></span>Active</label>
+                                <label>Non Active<input type="checkbox" name="status" <?= $user['statusUser'] == null ? '' : 'checked'; ?>><span class="lever"></span>Active</label>
                             </div>
                         </div>
                     </div>
